@@ -9,6 +9,7 @@
     margin-top: 14px;
     background-repeat: no-repeat;
     background-position: center;
+    margin-left: 18px;
 }
 
 @media screen and (max-width: 320px) {
@@ -16,5 +17,6 @@
         margin-top: 9px;
         width: 18px;
         height: 18px;
+        margin-left: 15px;
     }
 }

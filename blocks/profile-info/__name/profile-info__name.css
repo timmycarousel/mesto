@@ -5,13 +5,29 @@
     font-weight: 500;
     font-size: 42px;
     line-height: 114%;
+    display: flex;
+    flex-wrap: wrap;
 
+}
+
+@media screen and (max-width: 879px) {
+    .profile-info__name {
+    
+        font-size: 35px;
+        line-height: 37px;
+        flex-basis: content;
+        justify-content: space-between;
+        /* margin-left: 19px; */
+    }
 }
 
 @media screen and (max-width: 320px) {
     .profile-info__name {
+    
         font-size: 27px;
         line-height: 33px;
         flex-basis: content;
+        justify-content: space-between;
+        /* margin-left: 19px; */
     }
 }

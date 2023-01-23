@@ -4,6 +4,15 @@
     margin: 0 auto;
 }
 
+@media screen and (max-width: 879px)
+{
+    .footer {
+        max-width: 90%;
+        
+    }
+}
+
+
 @media screen and (max-width: 320px) {
     .footer {
         margin-top: 28px;
