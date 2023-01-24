@@ -10,3 +10,12 @@
     right: -40px;
 
 }
+
+@media screen and (max-width: 320px) {
+    .popup__close-icon {
+        width: 20px;
+        height: 20px;
+        top: -40px;
+        right: 0;
+    }
+}

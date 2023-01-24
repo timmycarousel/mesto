@@ -6,10 +6,13 @@ let popupContainer = page.querySelector('.popup__container');
 let nameInput = page.querySelector('.popup__field-name');
 let infoInput = page.querySelector('.popup__field-info');
 
+let name = page.querySelector('.profile-info__name');
+let info = page.querySelector('.profile-info__text');
+
+
 
 function handleFormSubmit(evt) {
     evt.preventDefault();
-    
     let name = page.querySelector('.profile-info__name');
     let info = page.querySelector('.profile-info__text');
     info.textContent = infoInput.value;
@@ -20,7 +23,13 @@ popupContainer.addEventListener('submit', handleFormSubmit);
 
 
 function displayFlex() {
+
+    let name = page.querySelector('.profile-info__name');
+    let info = page.querySelector('.profile-info__text');
+    nameInput.value = name.textContent;
+    infoInput.value = info.textContent;
     popup.classList.add('popup_active');
+
 }
 editButton.addEventListener('click', displayFlex);
 
