@@ -27,7 +27,7 @@
         font-size: 27px;
         line-height: 33px;
         flex-basis: content;
-        justify-content: space-between;
+        justify-self: center;
         /* margin-left: 19px; */
     }
 }

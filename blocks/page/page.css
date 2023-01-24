@@ -5,4 +5,5 @@
     color: #fff;
     background-color: #000000;
     text-rendering: optimizeLegibility;
+    position: relative;
 }
