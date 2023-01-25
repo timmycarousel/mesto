@@ -9,3 +9,7 @@
     align-self: center;
     margin-left: 30px;
 }
+
+.element__like-button:active {
+    background-image: url(../../../images/like-active.svg);
+}
