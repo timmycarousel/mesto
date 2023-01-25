@@ -5,14 +5,14 @@
     font-size: 14px;
     line-height: 17px;
     font-style: normal;
-    color: #000000;
+    color: #000;
     padding-bottom: 13px;
     width: 80%;
 }
 
 @media screen and (max-width: 320px) {
     .popup__field-info {
-margin-bottom: 11px;
-width: 85%;
+        margin-bottom: 11px;
+        width: 85%;
     }
 }

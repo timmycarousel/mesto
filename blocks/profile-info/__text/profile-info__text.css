@@ -1,25 +1,20 @@
 .profile-info__text {
     margin: 0;
     padding: 0;
-    font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 22px;
 }
 
-@media screen and (max-width: 879px){
+@media screen and (max-width: 879px) {
     .profile-info__text {
         text-align: center;
-    } 
+    }
 }
 
 @media screen and (max-width: 320px) {
     .profile-info__text {
         font-size: 14px;
         line-height: 17px;
-        /* justify-self: center; */
-        text-align: center;
-       
-
     }
 }

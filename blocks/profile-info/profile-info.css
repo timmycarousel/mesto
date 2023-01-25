@@ -1,35 +1,22 @@
 .profile-info {
     margin: 0;
     padding: 0;
+    display: -ms-grid;
     display: grid;
-    grid-template-areas:
+        grid-template-areas:
         "nowrap"
         "text";
     row-gap: 13px;
-    /* justify-self: start; */
 }
-
-
-/* @media screen and (max-width: 879px) {
-    .profile-info {
-
-display: flex;
-flex-wrap: wrap;
-justify-content: center;
-column-gap: 10px;
-row-gap: 9px;
-margin-top: 26px;
-margin-left: auto;
-margin-right: auto;
-    }
-} */
 
 @media screen and (max-width: 320px) {
     .profile-info {
-justify-content: center;
-row-gap: 9px;
-margin-top: 26px;
-margin-left: auto;
-margin-right: auto;
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        row-gap: 9px;
+        margin-top: 26px;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

@@ -7,6 +7,5 @@
 @media screen and (max-width: 320px) {
     .profile-info__nowrap {
         text-align: center;
-        /* justify-self: center; */
     }
 }
