@@ -8,6 +8,8 @@ Grid Layout, Подклбчен шрифт 'Intro', БЭМ Nested, JS.
 
 ### Ссылка на GitHub Pages
 
+ https://timmycarousel.github.io/mesto/
+
 
 
 
