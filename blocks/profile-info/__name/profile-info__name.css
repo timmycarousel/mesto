@@ -1,5 +1,5 @@
 .profile-info__name {
-    margin: 0;
+    margin: 0 -6px 0 0;
     padding: 0;
     font-style: normal;
     font-weight: 500;
@@ -9,7 +9,7 @@
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
+    flex-wrap: wrap;
 
 }
 
@@ -19,11 +19,11 @@
         font-size: 35px;
         line-height: 37px;
         -ms-flex-preferred-size: content;
-            flex-basis: content;
+        flex-basis: content;
         -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
-       
+        -ms-flex-pack: justify;
+        justify-content: space-between;
+        margin-left: 31px;
     }
 }
 
@@ -33,8 +33,8 @@
         font-size: 27px;
         line-height: 33px;
         -ms-grid-column-align: center;
-            justify-self: center;
-            margin-left: 31px;
+        justify-self: center;
+
 
     }
 }
