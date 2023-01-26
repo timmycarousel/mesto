@@ -6,7 +6,7 @@
         grid-template-areas:
         "nowrap"
         "text";
-    row-gap: 13px;
+    row-gap: 8px;
 }
 
 @media screen and (max-width: 320px) {
