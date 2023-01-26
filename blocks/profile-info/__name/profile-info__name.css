@@ -23,7 +23,8 @@
         -webkit-box-pack: justify;
         -ms-flex-pack: justify;
         justify-content: space-between;
-        margin-left: 31px;
+        margin-left: 29px;
+        margin-right: -3px;
     }
 }
 
