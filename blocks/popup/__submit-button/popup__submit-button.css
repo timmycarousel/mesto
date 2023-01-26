@@ -21,6 +21,7 @@
     -webkit-box-align: center;
         -ms-flex-align: center;
             align-items: center;
+            margin-top: 20px;
 }
 
 @media screen and (max-width: 879px) {
@@ -29,6 +30,7 @@
         height: 46px;
         font-size: 14px;
         line-height: 17px;
-        margin-bottom: 16px;
+        margin-top: 7px;
+        margin-bottom: -3px;
     }
 }
