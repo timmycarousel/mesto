@@ -23,7 +23,7 @@
         -webkit-box-pack: justify;
             -ms-flex-pack: justify;
                 justify-content: space-between;
-        margin-left: 31px;
+       
     }
 }
 
@@ -34,6 +34,7 @@
         line-height: 33px;
         -ms-grid-column-align: center;
             justify-self: center;
+            margin-left: 31px;
 
     }
 }
