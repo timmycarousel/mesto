@@ -7,11 +7,10 @@
     font-style: normal;
     color: #000;
     padding-bottom: 8px;
-    /* width: 80%; */
 }
 
 @media screen and (max-width: 879px) {
     .popup__field-info {
-        margin-bottom: 8px; 
+        margin-bottom: 8px;
     }
 }

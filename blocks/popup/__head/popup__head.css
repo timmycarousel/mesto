@@ -6,7 +6,8 @@
     max-width: 330px;
     margin: 0 36px;
     padding-bottom: 12px;
-    align-self: flex-start;
+    -ms-flex-item-align: start;
+        align-self: flex-start;
 }
 
 @media screen and (max-width: 879px) {
