@@ -13,6 +13,10 @@
         justify-self: end;
 }
 
+.profile__add-button:hover {
+    opacity: 0.6;
+}
+
 @media screen and (max-width: 879px) {
     .profile__add-button {
 
