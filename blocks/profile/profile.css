@@ -1,6 +1,6 @@
 .profile {
     margin: 40px auto 0 auto;
-    max-width: 880px;
+    max-width: 69%;
     display: -ms-grid;
     display: grid;
     -ms-grid-columns: 17% auto 20%;
@@ -10,7 +10,13 @@
             align-items: center;
 }
 
-@media screen and (max-width: 879px) {
+@media screen and (max-width: 1090px) {
+    .profile {
+        max-width: 90%;
+    }
+}
+
+@media screen and (max-width: 890px) {
     .profile {
         display: -webkit-box;
         display: -ms-flexbox;
