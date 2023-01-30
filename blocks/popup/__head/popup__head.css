@@ -18,7 +18,9 @@
         line-height: 22px;
         max-width: 238px;
         margin: 0 auto 0 auto;
-        padding-bottom: 14px;
-        padding-right: 8px;
+        padding-top: 25px;
+        padding-left: 0;
+        /* padding-bottom: 14px;
+        padding-right: 8px; */
     }
 }

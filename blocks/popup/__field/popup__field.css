@@ -16,9 +16,6 @@
 
 @media screen and (max-width: 879px) {
     .popup__field {
-        -webkit-box-pack: justify;
-            -ms-flex-pack: justify;
-                justify-content: space-between;
         max-width: 85%;
     }
 }

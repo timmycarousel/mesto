@@ -12,6 +12,6 @@
 
 @media screen and (max-width: 879px) {
     .popup__field-info {
-        margin-bottom: 8px;
+        margin-bottom: 0px;
     }
 }
