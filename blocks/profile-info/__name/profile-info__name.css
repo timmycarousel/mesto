@@ -5,11 +5,15 @@
     font-weight: 500;
     font-size: 42px;
     line-height: 114%;
-    display: -webkit-box;
+    /* display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
+    flex-wrap: wrap; */
+    text-overflow: ellipsis;
+white-space: nowrap;
+overflow: hidden; 
+max-width: 470px;
 
 }
 
@@ -25,6 +29,7 @@
         justify-content: space-between;
         margin-left: 29px;
         margin-right: -3px;
+        max-width: 320px;
     }
 }
 
@@ -35,6 +40,7 @@
         line-height: 33px;
         -ms-grid-column-align: center;
         justify-self: center;
+        max-width: 210px;
 
 
     }
