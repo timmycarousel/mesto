@@ -3,7 +3,7 @@
     padding: 0;
     width: 100%;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
     display: block;
     aspect-ratio: 1/1;
     border-top-left-radius: 10px;

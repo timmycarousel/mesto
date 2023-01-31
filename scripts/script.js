@@ -11,7 +11,6 @@ let info = page.querySelector('.profile-info__text');
 
 function handleFormSubmit(evt) {
     evt.preventDefault();
-
     info.textContent = infoInput.value;
     name.textContent = nameInput.value;
     displayNone();
