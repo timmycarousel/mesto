@@ -7,8 +7,8 @@
     width: 22px;
     background-color: transparent;
     -ms-flex-item-align: center;
-        -ms-grid-row-align: center;
-        align-self: center;
+    -ms-grid-row-align: center;
+    align-self: center;
     margin-left: 29px;
 }
 
@@ -18,8 +18,5 @@
 
 .element__like-button:active {
     opacity: 1;
-}
-
-.element__like-button:active {
     background-image: url(../../../images/like-active.svg);
 }
