@@ -17,5 +17,6 @@
     .profile-info__nowrap {
         text-align: center;
         margin-top: 0;
+        max-width: 90vw;
     }
 }
