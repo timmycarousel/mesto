@@ -2,11 +2,9 @@
     display: flex;
     flex-wrap: nowrap;
     margin-top: 19px;
-    
-
 }
 
-@media screen and (max-width: 879px) {
+@media screen and (max-width: 890px) {
     .profile-info__nowrap {
         text-align: center;
         max-width: 99vw;
