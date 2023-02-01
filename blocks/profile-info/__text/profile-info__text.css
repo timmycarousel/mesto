@@ -12,13 +12,18 @@
 @media screen and (max-width: 879px) {
     .profile-info__text {
         text-align: center;
+        font-size: 14px;
+        line-height: 17px;
         margin-top: 0;
+        /* margin-left: 29px;
+        margin-right: -3px; */
+        max-width: 77%;
+        justify-self: center;
     }
 }
 
-@media screen and (max-width: 320px) {
+/* @media screen and (max-width: 320px) {
     .profile-info__text {
-        font-size: 14px;
-        line-height: 17px;
+
     }
-}
+} */

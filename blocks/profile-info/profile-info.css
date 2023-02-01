@@ -1,9 +1,9 @@
 .profile-info {
-    margin: 0;
+    margin-right: 10px;
     padding: 0;
     display: -ms-grid;
     display: grid;
-        grid-template-areas:
+    grid-template-areas:
         "nowrap"
         "text";
     row-gap: 16px;
@@ -12,11 +12,13 @@
 
 
 
+
+
 @media screen and (max-width: 320px) {
     .profile-info {
         -webkit-box-pack: center;
-            -ms-flex-pack: center;
-                justify-content: center;
+        -ms-flex-pack: center;
+        justify-content: center;
         row-gap: 9px;
         margin-top: 26px;
         margin-left: auto;

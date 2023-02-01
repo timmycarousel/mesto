@@ -15,8 +15,8 @@
 
 @media screen and (max-width: 879px) {
     .profile-info__name {
-        font-size: 35px;
-        line-height: 37px;
+        font-size: 27px;
+        line-height: 33px;
         -ms-flex-preferred-size: content;
         flex-basis: content;
         -webkit-box-pack: justify;
@@ -30,8 +30,7 @@
 
 @media screen and (max-width: 320px) {
     .profile-info__name {
-        font-size: 27px;
-        line-height: 33px;
+
         -ms-grid-column-align: center;
         justify-self: center;
         /* max-width: 210px; */
