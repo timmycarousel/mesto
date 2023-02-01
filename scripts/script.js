@@ -8,6 +8,10 @@ let infoInput = page.querySelector('.popup__field-info');
 let name = page.querySelector('.profile-info__name');
 let info = page.querySelector('.profile-info__text');
 
+function displayNone() {
+    popup.classList.remove('popup_active');
+}
+closeIcon.addEventListener('click', displayNone);
 
 function handleFormSubmit(evt) {
     evt.preventDefault();
@@ -27,8 +31,5 @@ function displayFlex() {
 editButton.addEventListener('click', displayFlex);
 
 
-function displayNone() {
-    popup.classList.remove('popup_active');
-}
-closeIcon.addEventListener('click', displayNone);
+
 
