@@ -16,11 +16,12 @@
 @import url('../blocks/popup/_active/popup_active.css');
 
 @import url('../blocks/popup/__field/popup__field.css');
-@import url('../blocks/popup/__field-form/popup__field-form.css');
 @import url('../blocks/popup/__field-info/popup__field-info.css');
 @import url('../blocks/popup/__field-name/popup__field-name.css');
 @import url('../blocks/popup/__head/popup__head.css');
 @import url('../blocks/popup/__submit-button/popup__submit-button.css');
+
+@import url('../blocks/field/field.css');
 
 @import url('../blocks/header/header.css');
 @import url('../blocks/header/__logo/header__logo.css');
