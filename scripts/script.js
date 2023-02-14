@@ -8,6 +8,7 @@ const infoInput = page.querySelector('.popup__field-info');
 const name = page.querySelector('.profile-info__name');
 const info = page.querySelector('.profile-info__text');
 
+
 displayNone = () => {
     popup.classList.remove('popup_active');
 }
@@ -88,4 +89,9 @@ render = () => {
 }
 
 render();//выводим функцию
+
+// const likeButton = page.querySelector('.element__like-button');
+// if (likeButton.target.classList('element__like-button')) {
+// likeButton.classList.add ('element__like-button_active');
+// }
 
