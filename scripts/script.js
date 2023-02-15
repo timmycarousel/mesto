@@ -9,6 +9,7 @@ const name = page.querySelector('.profile-info__name');
 const info = page.querySelector('.profile-info__text');
 
 
+
 displayNone = () => {
     popup.classList.remove('popup_active');
 }
@@ -80,18 +81,35 @@ renderCard = ({ name, link }) => {
     placeElement.querySelector(".element__img").alt = name;// alt   
     placeElement.querySelector(".element__text").textContent = name;// название
 
-    container.append(placeElement);// добавляем карточку перед дочерним элементом
+    // container.append (placeElement);// добавляем карточку перед дочерним элементом
+
+    const likeButton = placeElement.querySelector('.element__like-button'); // лайки
+    likeActive = () => {
+        likeButton.classList.add('element__like-button_active');
+    }
+    likeButton.addEventListener('click', likeActive);
+
+    const trashButton = placeElement.querySelector('.element__trash');
+    trashActive = () => {
+        placeElement.remove();
+    }
+    trashButton.addEventListener('click', trashActive);
+
+    return placeElement;
+
+
+
 }
 
-//рендерим элементы массива PlaceInfo по RenderCard
+
 render = () => {
-    cardInfo.forEach(renderCard);
-}
+    cardInfo.forEach((element) => {
+      container.append(renderCard(element));
+    });
+  }
 
 render();//выводим функцию
 
-// const likeButton = page.querySelector('.element__like-button');
-// if (likeButton.target.classList('element__like-button')) {
-// likeButton.classList.add ('element__like-button_active');
-// }
+
+
 
