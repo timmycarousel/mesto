@@ -97,8 +97,6 @@ renderCard = ({ name, link }) => {
 
     return placeElement;
 
-
-
 }
 
 
