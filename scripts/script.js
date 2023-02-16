@@ -91,6 +91,30 @@ renderCard = ({ name, link }) => {
     placeElement.querySelector(".element__img").src = link;// ссылка
     placeElement.querySelector(".element__img").alt = name;// alt   
     placeElement.querySelector(".element__text").textContent = name;// название
+    const closeImg = page.querySelector('.popupimg__close-icon');
+    const popupImg = page.querySelector('.popupimg');
+
+    const headImg = page.querySelector('.popupimg__head');
+    const fullImg = page.querySelector('.popupimg__img');
+    const elementImg = placeElement.querySelector('.element__img');
+
+    imgClose = () => {
+        popupImg.classList.remove('popupimg_active');
+    }
+    closeImg.addEventListener('click', imgClose);
+
+    imgOpen = () => {
+        popupImg.classList.add('popupimg_active');
+        headImg.textContent = name;
+        fullImg.src = link;
+
+    }
+    elementImg.addEventListener('click', imgOpen);
+
+
+
+
+
 
     const likeButton = placeElement.querySelector('.element__like-button'); // лайки
     likeActive = () => {
@@ -124,12 +148,16 @@ const urlInput = page.querySelector('.popupcard__field-url');
 
 newCard = (evt) => {
     evt.preventDefault();
-    const placeElement = renderCard({name: cardInput.value, link: urlInput.value});
+    const placeElement = renderCard({ name: cardInput.value, link: urlInput.value });
     container.prepend(placeElement);
     cardNone();
 }
 
 popupcardField.addEventListener('submit', newCard);
+
+
+
+
 
 
 
