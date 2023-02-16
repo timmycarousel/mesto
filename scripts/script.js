@@ -50,12 +50,12 @@ editButton.addEventListener('click', displayFlex);
 
 const initialCards = [
     {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+        name: 'Тверь',
+        link: 'https://газета-вся-тверь.рф/upload/iblock/3de/3deca0c26f960a9e8890c860363f35af.jpg'
     },
     {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+        name: 'Нилова Пустынь',
+        link: 'https://img2.goodfon.ru/original/1080x960/3/d3/nebo-reka-derevya-vesna.jpg'
     },
     {
         name: 'Иваново',
