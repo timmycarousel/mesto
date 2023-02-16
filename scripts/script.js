@@ -87,12 +87,12 @@ const cardInfo = initialCards.map((item) => ({
 }));
 
 
+//функция создает DOM элемент, на основе 1 параметра-объекта с 2 ключами 
 renderCard = ({ name, link }) => {
     const placeElement = cardTemplate.querySelector(".element").cloneNode(true);// клонируем из cardTemplate в placeElement
     placeElement.querySelector(".element__img").src = link;// ссылка
     placeElement.querySelector(".element__img").alt = name;// alt   
     placeElement.querySelector(".element__text").textContent = name;// название
-
 
     const likeButton = placeElement.querySelector('.element__like-button'); // лайки
     likeActive = () => {
@@ -110,6 +110,7 @@ renderCard = ({ name, link }) => {
 
 }
 
+//берет каждый элемент массива и создает карточку по правилам функции renderCard
 render = () => {
     cardInfo.forEach((element) => {
         container.append(renderCard(element));
@@ -118,7 +119,6 @@ render = () => {
 
 render();
 
-
 //новая карточка из попапа
 const popupcardField = page.querySelector('.popupcard__field');
 const cardInput = page.querySelector('.popupcard__field-name');
@@ -126,23 +126,7 @@ const urlInput = page.querySelector('.popupcard__field-url');
 
 newCard = (evt) => {
     evt.preventDefault();
-    const placeElement = cardTemplate.querySelector('.element').cloneNode(true);
-    placeElement.querySelector(".element__img").src = urlInput.value;// ссылка
-    placeElement.querySelector(".element__img").alt = cardInput.value;// alt  
-    placeElement.querySelector('.element__text').textContent = cardInput.value;
-
-    const likeButton = placeElement.querySelector('.element__like-button'); // лайки
-    likeActive = () => {
-        likeButton.classList.add('element__like-button_active');
-    }
-    likeButton.addEventListener('click', likeActive);
-
-    const trashButton = placeElement.querySelector('.element__trash');
-    trashActive = () => {
-        placeElement.remove();
-    }
-    trashButton.addEventListener('click', trashActive);
-
+    const placeElement = renderCard({name: cardInput.value, link: urlInput.value});
     container.prepend(placeElement);
 }
 
