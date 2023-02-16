@@ -25,8 +25,6 @@ openCard = () => {// открываем форму добавления карт
 plusCard.addEventListener('click', openCard);
 
 
-
-
 displayNone = () => {
     popup.classList.remove('popup_active');
 }
@@ -128,6 +126,7 @@ newCard = (evt) => {
     evt.preventDefault();
     const placeElement = renderCard({name: cardInput.value, link: urlInput.value});
     container.prepend(placeElement);
+    cardNone();
 }
 
 popupcardField.addEventListener('submit', newCard);
