@@ -8,6 +8,23 @@ const infoInput = page.querySelector('.popup__field-info');
 const name = page.querySelector('.profile-info__name');
 const info = page.querySelector('.profile-info__text');
 
+const popupcard = page.querySelector('.popupcard');
+const plusCard = page.querySelector('.profile__add-button');
+const closeCard = page.querySelector('.popupcard__close-icon');
+
+
+cardNone = () => { //закрываем форму добавления карточки
+    popupcard.classList.remove('popupcard_active');
+}
+closeCard.addEventListener('click', cardNone);
+
+openCard = () => {// открываем форму добавления карточки
+    popupcard.classList.add('popupcard_active');
+
+}
+plusCard.addEventListener('click', openCard);
+
+
 
 
 displayNone = () => {
@@ -61,27 +78,21 @@ const initialCards = [
 ];
 
 
-
+//карточки из контейнера
 const container = document.querySelector('.elements');
 const cardTemplate = document.querySelector('.card-template').content;
 
-
-//создаем массив из initialCards и возвращаем свойства name и link
 const cardInfo = initialCards.map((item) => ({
-    name: item.name,
-    link: item.link
+    name: item.name, link: item.link
 }));
-// console.log(placeInfo); // выводим массив в консоль
 
 
-//клонируем
 renderCard = ({ name, link }) => {
     const placeElement = cardTemplate.querySelector(".element").cloneNode(true);// клонируем из cardTemplate в placeElement
     placeElement.querySelector(".element__img").src = link;// ссылка
     placeElement.querySelector(".element__img").alt = name;// alt   
     placeElement.querySelector(".element__text").textContent = name;// название
 
-    // container.append (placeElement);// добавляем карточку перед дочерним элементом
 
     const likeButton = placeElement.querySelector('.element__like-button'); // лайки
     likeActive = () => {
@@ -99,14 +110,44 @@ renderCard = ({ name, link }) => {
 
 }
 
-
 render = () => {
     cardInfo.forEach((element) => {
-      container.append(renderCard(element));
+        container.append(renderCard(element));
     });
-  }
+}
 
-render();//выводим функцию
+render();
+
+
+//новая карточка из попапа
+const popupcardField = page.querySelector('.popupcard__field');
+const cardInput = page.querySelector('.popupcard__field-name');
+const urlInput = page.querySelector('.popupcard__field-url');
+
+newCard = (evt) => {
+    evt.preventDefault();
+    const placeElement = cardTemplate.querySelector('.element').cloneNode(true);
+    placeElement.querySelector(".element__img").src = urlInput.value;// ссылка
+    placeElement.querySelector(".element__img").alt = cardInput.value;// alt  
+    placeElement.querySelector('.element__text').textContent = cardInput.value;
+
+    const likeButton = placeElement.querySelector('.element__like-button'); // лайки
+    likeActive = () => {
+        likeButton.classList.add('element__like-button_active');
+    }
+    likeButton.addEventListener('click', likeActive);
+
+    const trashButton = placeElement.querySelector('.element__trash');
+    trashActive = () => {
+        placeElement.remove();
+    }
+    trashButton.addEventListener('click', trashActive);
+
+    container.prepend(placeElement);
+}
+
+popupcardField.addEventListener('submit', newCard);
+
 
 
 
