@@ -94,7 +94,7 @@ renderCard = ({ name, link }) => {
 
     const likeButton = placeElement.querySelector('.element__like-button'); // лайки
     likeActive = () => {
-        likeButton.classList.add('element__like-button_active');
+        likeButton.classList.toggle('element__like-button_active');
     }
     likeButton.addEventListener('click', likeActive);
 
