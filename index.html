@@ -1,82 +1,126 @@
 <!DOCTYPE html>
 <html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Место</title>
+    <link rel="stylesheet" href="pages/index.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Место</title>
-  <link rel="stylesheet" href="pages/index.css">
-</head>
-
-<body class="html">
-  <div class="page">
-    <header class="header">
-      <div class="header__logo"></div>
-    </header>
-    <main class="content">
-      <div class="profile">
-        <img class="profile__avatar" src="./images/kusto-foto.jpg" alt="Аватар">
-        <div class="profile-info">
-          <div class="profile-info__nowrap">
-            <h1 class="profile-info__name">Жак-Ив Кусто</h1>
-            <button class="profile__edit-button button" type="button"></button>
+  <body class="html">
+    <div class="page">
+      <header class="header">
+        <div class="header__logo"></div>
+      </header>
+      <main class="content">
+        <div class="profile">
+          <img
+            class="profile__avatar"
+            src="./images/kusto-foto.jpg"
+            alt="Аватар"
+          />
+          <div class="profile-info">
+            <div class="profile-info__nowrap">
+              <h1 class="profile-info__name">Жак-Ив Кусто</h1>
+              <button
+                class="profile__edit-button button"
+                type="button"
+              ></button>
+            </div>
+            <p class="profile-info__text">Исследователь океана</p>
           </div>
-          <p class="profile-info__text">Исследователь океана</p>
+          <button class="profile__add-button button" type="button"></button>
         </div>
-        <button class="profile__add-button button" type="button"></button>
-      </div>
-      <section class="elements">
-      </section>
-      <template class="card-template">
-        <div class="element">
-          <img class="element__img" alt="">
-          <div class="element__line-text">
-            <h2 class="element__text"></h2>
-            <button class="element__trash button" type="button"></button>
-            <button class="element__like-button button" type="button"></button>
+        <section class="elements"></section>
+        <template class="card-template">
+          <div class="element">
+            <img class="element__img" alt="" />
+            <div class="element__line-text">
+              <h2 class="element__text"></h2>
+              <button class="element__trash button" type="button"></button>
+              <button
+                class="element__like-button button"
+                type="button"
+              ></button>
+            </div>
           </div>
+        </template>
+      </main>
+      <footer class="footer">
+        <p class="footer__copyright">© 2023 Mesto Russia</p>
+      </footer>
+      <div class="popupuser">
+        <div class="popupuser__container">
+          <button type="button" class="popupuser__close-icon button"></button>
+          <h3 class="popupuser__head">Редактировать профиль</h3>
+          <form
+            action="url"
+            name="MyName"
+            class="popupuser__field"
+            method="post"
+          >
+            <input
+              type="text"
+              name="Name"
+              id="nameValue"
+              placeholder="Имя"
+              class="popupuser__field-name field"
+            />
+            <input
+              type="text"
+              name="Info"
+              id="infoValue"
+              placeholder="О себе"
+              class="popupuser__field-info field"
+            />
+            <button class="popupuser__submit-button button" type="submit">
+              Сохранить
+            </button>
+          </form>
         </div>
-      </template>
-    </main>
-    <footer class="footer">
-      <p class="footer__copyright">© 2023 Mesto Russia</p>
-    </footer>
-    <div class="popupuser">
-      <div class="popupuser__container">
-        <button type="button" class="popupuser__close-icon button"></button>
-        <h3 class="popupuser__head">Редактировать профиль</h3>
-        <form action="url" name="MyName" class="popupuser__field" method="post">
-          <input type="text" name="Name" id="nameValue" placeholder="Имя" class="popupuser__field-name field">
-          <input type="text" name="Info" id="infoValue" placeholder="О себе" class="popupuser__field-info field">
-          <button class="popupuser__submit-button button" type="submit">Сохранить</button>
-        </form>
       </div>
-
-    </div>
-    <div class="popupcard">
-      <div class="popupcard__container">
-        <button type="button" class="popupcard__close-icon button"></button>
-        <h3 class="popupcard__head">Новое место</h3>
-        <form action="url" name="NamePlace" class="popupcard__field" method="post">
-          <input type="text" name="NameNewplace" id="NewValue" placeholder="Название"
-            class="popupcard__field-name popupcard__field-form">
-          <input type="text" name="UrlPlace" id="UrlValue" placeholder="Ссылка на картинку"
-            class="popupcard__field-url popupcard__field-form">
-          <button class="popupcard__submit-button button" type="submit">Создать</button>
-        </form>
+      <div class="popupcard">
+        <div class="popupcard__container">
+          <button type="button" class="popupcard__close-icon button"></button>
+          <h3 class="popupcard__head">Новое место</h3>
+          <form
+            action="url"
+            name="NamePlace"
+            class="popupcard__field"
+            method="post"
+          >
+            <input
+              required
+              type="text"
+              name="NameNewplace"
+              id="NewValue"
+              placeholder="Название"
+              class="popupcard__field-name popupcard__field-form"
+            />
+            <input
+              required
+              type="url"
+              name="UrlPlace"
+              id="UrlValue"
+              placeholder="Ссылка на картинку"
+              class="popupcard__field-url popupcard__field-form"
+            />
+            <button class="popupcard__submit-button button" type="submit">
+              Создать
+            </button>
+          </form>
+        </div>
+      </div>
+      <div class="popupimg">
+        <div class="popupimg__container">
+          <button type="button" class="popupimg__close-icon button"></button>
+          <img class="popupimg__img" alt="" />
+          <h3 class="popupimg__head"></h3>
+        </div>
       </div>
     </div>
-    <div class="popupimg">
-      <div class="popupimg__container">
-        <button type="button" class="popupimg__close-icon button"></button>
-        <img class="popupimg__img" alt="">
-        <h3 class="popupimg__head"></h3>
-      </div>
-    </div>
-  </div>
-  <script src="./scripts/cards.js"></script>
-  <script src="./scripts/script.js"></script>
-</body>
-
+    <script src="./scripts/cards.js"></script>
+    <script src="./scripts/script.js"></script>
+  </body>
 </html>

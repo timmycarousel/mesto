@@ -1,9 +1,9 @@
 .popupuser__field-name {
-    margin-top: 49px;
+  margin-top: 49px;
 }
 
 @media screen and (max-width: 879px) {
-    .popupuser__field-name {
-        margin-top: 75px;
-    }
+  .popupuser__field-name {
+    margin-top: 75px;
+  }
 }

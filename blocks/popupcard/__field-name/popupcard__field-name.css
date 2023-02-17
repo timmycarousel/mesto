@@ -1,11 +1,10 @@
 .popupcard__field-name {
-    margin-top: 49px;
-    padding-bottom: 8px;
-
+  margin-top: 49px;
+  padding-bottom: 8px;
 }
 
 @media screen and (max-width: 879px) {
-    .popupcard__field-name {
-        margin-top: 75px;
-    }
+  .popupcard__field-name {
+    margin-top: 75px;
+  }
 }
