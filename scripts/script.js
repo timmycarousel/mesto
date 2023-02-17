@@ -39,13 +39,13 @@ handleFormSubmit = (evt) => {
 popupField.addEventListener('submit', handleFormSubmit);
 
 
-displayFlex = () => {
+popupActive = () => {
     nameInput.value = name.textContent;
     infoInput.value = info.textContent;
     popup.classList.add('popup_active');
 
 }
-editButton.addEventListener('click', displayFlex);
+editButton.addEventListener('click', popupActive);
 
 
 const initialCards = [
