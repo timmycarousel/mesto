@@ -1,7 +1,7 @@
 const page = document.querySelector('.page');
 const editButton = page.querySelector('.profile__edit-button');
 const popup = page.querySelector('.popup');
-const closeIcon = page.querySelector('.popup__close-icon');
+const iconClose = page.querySelector('.popup__close-icon');
 const popupField = page.querySelector('.popup__field');
 const nameInput = page.querySelector('.popup__field-name');
 const infoInput = page.querySelector('.popup__field-info');
@@ -10,42 +10,57 @@ const info = page.querySelector('.profile-info__text');
 
 const popupcard = page.querySelector('.popupcard');
 const plusCard = page.querySelector('.profile__add-button');
-const closeCard = page.querySelector('.popupcard__close-icon');
+const cardClose = page.querySelector('.popupcard__close-icon');
+
+const popupcardField = page.querySelector('.popupcard__field');
+const cardInput = page.querySelector('.popupcard__field-name');
+const urlInput = page.querySelector('.popupcard__field-url');
 
 
-cardNone = () => { //закрываем форму добавления карточки
+closeCard = () => { //закрываем форму добавления карточки
     popupcard.classList.remove('popupcard_active');
 }
-closeCard.addEventListener('click', cardNone);
+cardClose.addEventListener('click', closeCard);
 
 openCard = () => {// открываем форму добавления карточки
     popupcard.classList.add('popupcard_active');
-
+   
 }
 plusCard.addEventListener('click', openCard);
 
+//новая карточка из попапа
 
-displayNone = () => {
+newCard = (evt) => {
+    evt.preventDefault();
+    const placeElement = renderCard({ name: cardInput.value, link: urlInput.value });
+    container.prepend(placeElement);
+    closeCard();
+}
+
+popupcardField.addEventListener('submit', newCard);
+
+
+closePopup = () => {
     popup.classList.remove('popup_active');
 }
-closeIcon.addEventListener('click', displayNone);
+iconClose.addEventListener('click', closePopup);
 
 handleFormSubmit = (evt) => {
     evt.preventDefault();
     info.textContent = infoInput.value;
     name.textContent = nameInput.value;
-    displayNone();
+    closePopup();
 }
 popupField.addEventListener('submit', handleFormSubmit);
 
 
-popupActive = () => {
+activePopup = () => {
     nameInput.value = name.textContent;
     infoInput.value = info.textContent;
     popup.classList.add('popup_active');
 
 }
-editButton.addEventListener('click', popupActive);
+editButton.addEventListener('click', activePopup);
 
 
 const initialCards = [
@@ -91,25 +106,25 @@ renderCard = ({ name, link }) => {
     placeElement.querySelector(".element__img").src = link;// ссылка
     placeElement.querySelector(".element__img").alt = name;// alt   
     placeElement.querySelector(".element__text").textContent = name;// название
-    const closeImg = page.querySelector('.popupimg__close-icon');
+    const imgClose = page.querySelector('.popupimg__close-icon');
     const popupImg = page.querySelector('.popupimg');
 
     const headImg = page.querySelector('.popupimg__head');
     const fullImg = page.querySelector('.popupimg__img');
     const elementImg = placeElement.querySelector('.element__img');
 
-    imgClose = () => {
+    closeImg = () => {
         popupImg.classList.remove('popupimg_active');
     }
-    closeImg.addEventListener('click', imgClose);
+    imgClose.addEventListener('click', closeImg);
 
-    imgOpen = () => {
+    openImg = () => {
         popupImg.classList.add('popupimg_active');
         headImg.textContent = name;
         fullImg.src = link;
 
     }
-    elementImg.addEventListener('click', imgOpen);
+    elementImg.addEventListener('click', openImg);
 
 
 
@@ -141,19 +156,6 @@ render = () => {
 
 render();
 
-//новая карточка из попапа
-const popupcardField = page.querySelector('.popupcard__field');
-const cardInput = page.querySelector('.popupcard__field-name');
-const urlInput = page.querySelector('.popupcard__field-url');
-
-newCard = (evt) => {
-    evt.preventDefault();
-    const placeElement = renderCard({ name: cardInput.value, link: urlInput.value });
-    container.prepend(placeElement);
-    cardNone();
-}
-
-popupcardField.addEventListener('submit', newCard);
 
 
 
