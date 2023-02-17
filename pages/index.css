@@ -10,16 +10,16 @@
 
 @import url('../blocks/button/button.css');
 
-@import url('../blocks/popup/popup.css');
-@import url('../blocks/popup/__container/popup__container.css');
-@import url('../blocks/popup/__close-icon/popup__close-icon.css');
-@import url('../blocks/popup/_active/popup_active.css');
+@import url('../blocks/popupuser/popupuser.css');
+@import url('../blocks/popupuser/__container/popupuser__container.css');
+@import url('../blocks/popupuser/__close-icon/popupuser__close-icon.css');
+@import url('../blocks/popupuser/_active/popupuser_active.css');
 
-@import url('../blocks/popup/__field/popup__field.css');
-@import url('../blocks/popup/__field-info/popup__field-info.css');
-@import url('../blocks/popup/__field-name/popup__field-name.css');
-@import url('../blocks/popup/__head/popup__head.css');
-@import url('../blocks/popup/__submit-button/popup__submit-button.css');
+@import url('../blocks/popupuser/__field/popupuser__field.css');
+@import url('../blocks/popupuser/__field-info/popupuser__field-info.css');
+@import url('../blocks/popupuser/__field-name/popupuser__field-name.css');
+@import url('../blocks/popupuser/__head/popupuser__head.css');
+@import url('../blocks/popupuser/__submit-button/popupuser__submit-button.css');
 
 @import url('../blocks/field/field.css');
 

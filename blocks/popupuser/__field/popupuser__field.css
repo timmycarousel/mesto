@@ -1,4 +1,4 @@
-.popup__field {
+.popupuser__field {
 
     display: -webkit-box;
     display: -ms-flexbox;
@@ -16,7 +16,7 @@
 }
 
 @media screen and (max-width: 879px) {
-    .popup__field {
+    .popupuserp__field {
         max-width: 85%;
     }
 }

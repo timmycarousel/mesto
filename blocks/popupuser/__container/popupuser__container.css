@@ -1,4 +1,4 @@
-.popup__container {
+.popupuser__container {
     position: relative;
     width: 430px;
     background: #FFF;
@@ -24,13 +24,13 @@
 }
 
 @media screen and (max-width: 879px) {
-    .popup__container {
+    .popupuser__container {
         width: 90%;
     }
 }
 
 @media screen and (max-width: 320px) {
-    .popup__container {
+    .popupuser__container {
         width: 282px;
         -ms-flex-pack: distribute;
         justify-content: space-around;
