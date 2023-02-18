@@ -26,25 +26,26 @@ const fullImg = page.querySelector(".popupimg__img");
 const buttonClosePopupImg = page.querySelector(".popupimg__close-icon");
 const popupImg = page.querySelector(".popupimg");
 
-const cardInfo = initialCards.map((item) => ({
+const cardsInfo = initialCards.map((item) => ({
   name: item.name,
   link: item.link,
 }));
 
 //функция создает DOM элемент, на основе 1 параметра-объекта с 2 ключами
-createCard = ({ name, link }) => {
+const createCard = ({ name, link }) => {
   const placeElement = template.cloneNode(true); // клонируем из cardTemplate в placeElement
-  placeElement.querySelector(".element__img").src = link; // ссылка
-  placeElement.querySelector(".element__text").textContent = name; // название
-
   const elementImg = placeElement.querySelector(".element__img");
-
   const likeButton = placeElement.querySelector(".element__like-button"); // лайки
+
+  elementImg.src = link;
+  elementImg.alt = name;
+  placeElement.querySelector(".element__text").textContent = name; // название
 
   openImg = () => {
     popupImg.classList.add("popupimg_active");
     headImg.textContent = name;
     fullImg.src = link;
+    fullImg.alt = name;
   };
 
   likeActive = () => {
@@ -64,7 +65,7 @@ createCard = ({ name, link }) => {
 };
 
 render = () => {
-  cardInfo.forEach((element) => {
+  cardsInfo.forEach((element) => {
     container.append(createCard(element));
   });
 };
@@ -85,7 +86,7 @@ openPopupAddCard = () => {
   popupCard.classList.add("popupcard_active");
 };
 
-CreateNewCard = (evt) => {
+createNewCard = (evt) => {
   evt.preventDefault();
   const placeElement = createCard({
     name: cardInput.value,
@@ -96,7 +97,7 @@ CreateNewCard = (evt) => {
   evt.target.reset();
 };
 
-OpenClosePopupUser = () => {
+openClosePopupUser = () => {
   popupUser.classList.toggle("popupuser_active");
 };
 
@@ -104,7 +105,7 @@ editFormUser = (evt) => {
   evt.preventDefault();
   info.textContent = infoInput.value;
   name.textContent = nameInput.value;
-  OpenClosePopupUser();
+  openClosePopupUser();
 };
 
 activePopupUser = () => {
@@ -114,9 +115,9 @@ activePopupUser = () => {
 
 buttonClosePopupImg.addEventListener("click", closeImg);
 buttonEdit.addEventListener("click", activePopupUser);
-buttonEdit.addEventListener("click", OpenClosePopupUser);
+buttonEdit.addEventListener("click", openClosePopupUser);
 popupUserField.addEventListener("submit", editFormUser);
-buttonClosePopupUserForm.addEventListener("click", OpenClosePopupUser);
-popupCardField.addEventListener("submit", CreateNewCard);
+buttonClosePopupUserForm.addEventListener("click", openClosePopupUser);
+popupCardField.addEventListener("submit", createNewCard);
 buttonOpenPopupAddCard.addEventListener("click", openPopupAddCard);
 buttonClosePopupAddCard.addEventListener("click", closePopupAddCard);
