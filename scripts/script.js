@@ -41,19 +41,19 @@ const createCard = ({ name, link }) => {
   elementImg.alt = name;
   placeElement.querySelector(".element__text").textContent = name; // название
 
-  openImg = () => {
+  const openImg = () => {
     popupImg.classList.add("popupimg_active");
     headImg.textContent = name;
     fullImg.src = link;
     fullImg.alt = name;
   };
 
-  likeActive = () => {
+  const likeActive = () => {
     likeButton.classList.toggle("element__like-button_active");
   };
 
   const trashButton = placeElement.querySelector(".element__trash");
-  trashActive = () => {
+  const trashActive = () => {
     placeElement.remove();
   };
 
@@ -64,7 +64,7 @@ const createCard = ({ name, link }) => {
   return placeElement;
 };
 
-render = () => {
+const render = () => {
   cardsInfo.forEach((element) => {
     container.append(createCard(element));
   });
@@ -72,21 +72,21 @@ render = () => {
 
 render();
 
-closeImg = () => {
+const closeImg = () => {
   popupImg.classList.remove("popupimg_active");
 };
 
-closePopupAddCard = () => {
+const closePopupAddCard = () => {
   //закрываем форму добавления карточки
   popupCard.classList.remove("popupcard_active");
 };
 
-openPopupAddCard = () => {
+const openPopupAddCard = () => {
   // открываем форму добавления карточки
   popupCard.classList.add("popupcard_active");
 };
 
-createNewCard = (evt) => {
+const createNewCard = (evt) => {
   evt.preventDefault();
   const placeElement = createCard({
     name: cardInput.value,
@@ -97,18 +97,18 @@ createNewCard = (evt) => {
   evt.target.reset();
 };
 
-openClosePopupUser = () => {
+const openClosePopupUser = () => {
   popupUser.classList.toggle("popupuser_active");
 };
 
-editFormUser = (evt) => {
+const editFormUser = (evt) => {
   evt.preventDefault();
   info.textContent = infoInput.value;
   name.textContent = nameInput.value;
   openClosePopupUser();
 };
 
-activePopupUser = () => {
+const activePopupUser = () => {
   nameInput.value = name.textContent;
   infoInput.value = info.textContent;
 };
