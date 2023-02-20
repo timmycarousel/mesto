@@ -31,7 +31,14 @@ const cardsInfo = initialCards.map((item) => ({
   link: item.link,
 }));
 
-//функция создает DOM элемент, на основе 1 параметра-объекта с 2 ключами
+function openPopup(popup) {
+  popup.classList.add("popup_active");
+}
+
+function closePopup(popup) {
+  popup.classList.remove("popup_active");
+}
+
 const createCard = ({ name, link }) => {
   const placeElement = template.cloneNode(true); // клонируем из cardTemplate в placeElement
   const elementImg = placeElement.querySelector(".element__img");
@@ -40,13 +47,6 @@ const createCard = ({ name, link }) => {
   elementImg.src = link;
   elementImg.alt = name;
   placeElement.querySelector(".element__text").textContent = name; // название
-
-  const openImg = () => {
-    popupImg.classList.add("popupimg_active");
-    headImg.textContent = name;
-    fullImg.src = link;
-    fullImg.alt = name;
-  };
 
   const likeActive = () => {
     likeButton.classList.toggle("element__like-button_active");
@@ -59,7 +59,12 @@ const createCard = ({ name, link }) => {
 
   trashButton.addEventListener("click", trashActive);
   likeButton.addEventListener("click", likeActive);
-  elementImg.addEventListener("click", openImg);
+  elementImg.addEventListener("click", function () {
+    openPopup(popupImg);
+    headImg.textContent = name;
+    fullImg.src = link;
+    fullImg.alt = name;
+  });
 
   return placeElement;
 };
@@ -72,52 +77,43 @@ const render = () => {
 
 render();
 
-const closeImg = () => {
-  popupImg.classList.remove("popupimg_active");
-};
+buttonClosePopupImg.addEventListener("click", function () {
+  closePopup(popupImg);
+});
 
-const closePopupAddCard = () => {
-  //закрываем форму добавления карточки
-  popupCard.classList.remove("popupcard_active");
-};
-
-const openPopupAddCard = () => {
-  // открываем форму добавления карточки
-  popupCard.classList.add("popupcard_active");
-};
-
-const createNewCard = (evt) => {
+popupCardField.addEventListener("submit", function (evt) {
   evt.preventDefault();
+  openPopup(popupCard);
   const placeElement = createCard({
     name: cardInput.value,
     link: urlInput.value,
   });
   container.prepend(placeElement);
-  closePopupAddCard();
+  closePopup(popupCard);
   evt.target.reset();
-};
+});
 
-const openClosePopupUser = () => {
-  popupUser.classList.toggle("popupuser_active");
-};
+buttonClosePopupAddCard.addEventListener("click", function () {
+  closePopup(popupCard);
+});
 
-const editFormUser = (evt) => {
+buttonEdit.addEventListener("click", function () {
+  openPopup(popupUser);
+  nameInput.value = name.textContent;
+  infoInput.value = info.textContent;
+});
+
+popupUserField.addEventListener("submit", function (evt) {
   evt.preventDefault();
   info.textContent = infoInput.value;
   name.textContent = nameInput.value;
-  openClosePopupUser();
-};
+  closePopup(popupUser);
+});
 
-const activePopupUser = () => {
-  nameInput.value = name.textContent;
-  infoInput.value = info.textContent;
-};
+buttonClosePopupUserForm.addEventListener("click", function () {
+  closePopup(popupUser);
+});
 
-buttonClosePopupImg.addEventListener("click", closeImg);
-buttonEdit.addEventListener("click", activePopupUser);
-buttonEdit.addEventListener("click", openClosePopupUser);
-popupUserField.addEventListener("submit", editFormUser);
-buttonClosePopupUserForm.addEventListener("click", openClosePopupUser);
-popupCardField.addEventListener("submit", createNewCard);
-buttonOpenPopupAddCard.addEventListener("click", openPopupAddCard);
-buttonClosePopupAddCard.addEventListener("click", closePopupAddCard);
+buttonOpenPopupAddCard.addEventListener("click", function () {
+  openPopup(popupCard);
+});
