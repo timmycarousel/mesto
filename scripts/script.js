@@ -1,19 +1,20 @@
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
 const popupUser = page.querySelector(".popup_type_user");
-const buttonClosePopup = page.querySelectorAll(".popup__close-icon");
-const popupUserField = page.querySelector(".popup__field");
+const buttonsClosePopup = page.querySelectorAll(".popup__close-icon");
+const popupUserField = page.querySelector(".popup__field_user");
+
 const nameInput = page.querySelector("#nameValue");
-const infoInput = page.querySelector(".popup__field-info");
+const infoInput = page.querySelector("#infoValue");
 const name = page.querySelector(".profile-info__name");
 const info = page.querySelector(".profile-info__text");
 
 const popupCard = page.querySelector(".popup_type_card");
 const buttonOpenPopupAddCard = page.querySelector(".profile__add-button");
 
-const popupCardField = page.querySelector(".popup__field_type_card");
+const popupCardField = page.querySelector(".popup__field_card");
 const cardInput = page.querySelector("#newValue");
-const urlInput = page.querySelector(".popup__field-url");
+const urlInput = page.querySelector("#UrlValue");
 
 const container = document.querySelector(".elements");
 const cardTemplate = document.querySelector(".card-template").content;
@@ -37,7 +38,7 @@ function closePopup(popup) {
   popup.classList.remove("popup_active");
 }
 
-buttonClosePopup.forEach(function (button) {
+buttonsClosePopup.forEach(function (button) {
   const popup = button.closest(".popup");
   button.addEventListener("click", function () {
     return closePopup(popup);

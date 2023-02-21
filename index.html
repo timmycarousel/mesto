@@ -54,7 +54,12 @@
         <div class="popup__container popup__container_type_form">
           <button type="button" class="popup__close-icon button"></button>
           <h3 class="popup__head">Редактировать профиль</h3>
-          <form action="url" name="MyName" class="popup__field" method="post">
+          <form
+            action="url"
+            name="MyName"
+            class="popup__field popup__field_user"
+            method="post"
+          >
             <input
               required
               type="text"
@@ -84,7 +89,7 @@
           <form
             action="url"
             name="NamePlace"
-            class="popup__field popup__field_type_card"
+            class="popup__field popup__field_card"
             method="post"
           >
             <input
@@ -101,7 +106,7 @@
               name="UrlPlace"
               id="UrlValue"
               placeholder="Ссылка на картинку"
-              class="popup__field-url field"
+              class="popup__field-info field"
             />
             <button class="popup__submit-button button" type="submit">
               Создать
