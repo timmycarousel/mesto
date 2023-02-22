@@ -54,17 +54,17 @@ const createCard = ({ name, link }) => {
   elementImg.alt = name;
   placeElement.querySelector(".element__text").textContent = name; // название
 
-  const likeActive = () => {
+  const toggleLike = () => {
     likeButton.classList.toggle("element__like-button_active");
   };
 
   const trashButton = placeElement.querySelector(".element__trash");
-  const trashActive = () => {
+  const removeCard = () => {
     placeElement.remove();
   };
 
-  trashButton.addEventListener("click", trashActive);
-  likeButton.addEventListener("click", likeActive);
+  trashButton.addEventListener("click", removeCard);
+  likeButton.addEventListener("click", toggleLike);
   elementImg.addEventListener("click", function () {
     openPopup(popupImg);
     headImg.textContent = name;
