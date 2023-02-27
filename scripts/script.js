@@ -32,11 +32,11 @@ const cardsInfo = initialCards.map((item) => ({
 
 function openPopup(popup) {
   popup.classList.add("popup_active");
-  document.addEventListener ('keydown', function (evt){
-    if (evt.key === 'Escape' ) {
+  document.addEventListener("keydown", function (evt) {
+    if (evt.key === "Escape") {
       return closePopup(popup);
     }
-  })
+  });
 }
 
 function closePopup(popup) {
@@ -49,7 +49,6 @@ buttonsClosePopup.forEach(function (button) {
     return closePopup(popup);
   });
 });
-
 
 const createCard = ({ name, link }) => {
   const placeElement = template.cloneNode(true); // клонируем из cardTemplate в placeElement
