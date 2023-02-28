@@ -90,7 +90,6 @@ render();
 
 popupCardField.addEventListener("submit", function (evt) {
   evt.preventDefault();
-  closeEsc(popupCard);
   openPopup(popupCard);
   const placeElement = createCard({
     name: cardInput.value,
