@@ -32,15 +32,28 @@ const cardsInfo = initialCards.map((item) => ({
 
 function openPopup(popup) {
   popup.classList.add("popup_active");
-  document.addEventListener("keydown", function (evt) {
-    if (evt.key === "Escape") {
-      return closePopup(popup);
-    }
-  });
+  document.addEventListener("keydown", closeEsc);
+  popup.addEventListener("mousedown", clickOverlayClosePopup);
 }
 
 function closePopup(popup) {
   popup.classList.remove("popup_active");
+  document.addEventListener("keydown", closeEsc);
+  popup.addEventListener("mousedown", clickOverlayClosePopup);
+}
+
+function closeEsc(evt) {
+  if (evt.key === "Escape") {
+    const popupOpened = document.querySelector(".popup_active");
+    return closePopup(popupOpened);
+  }
+}
+
+function clickOverlayClosePopup(evt) {
+  if (evt.target === evt.currentTarget) {
+    const popupOpened = document.querySelector(".popup_active");
+    closePopup(popupOpened);
+  }
 }
 
 buttonsClosePopup.forEach(function (button) {
