@@ -1,5 +1,5 @@
 const enableValidation = {
-  formSelector: ".popup__field_user",
+  formSelector: ".popup__field",
   inputSelector: ".field",
   submitButtonSelector: ".popup__submit-button",
   inactiveButtonClass: "popup__submit-button_disabled",
@@ -12,8 +12,14 @@ function disableSubmit(evt) {
 }
 
 function validationConfig(config) {
-  const form = document.querySelector(config.formSelector);
+  const formList = Array.from(document.querySelectorAll(config.formSelector));
 
+  formList.forEach((form) => {
+    enableFormValidation(form, config);
+  });
+}
+
+function enableFormValidation(form, config) {
   form.addEventListener("submit", disableSubmit);
   form.addEventListener("input", () => {
     toggleButton(form, config);
@@ -48,9 +54,7 @@ function toggleButton(form, config) {
   const isFormValid = form.checkValidity();
 
   buttonSubmit.disabled = !isFormValid;
-  buttonSubmit.classList.toggle("popup__submit-button_disabled", !isFormValid);
-
-  console.log(isFormValid);
+  buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
 }
 
 function addInputListeners(form, config) {
