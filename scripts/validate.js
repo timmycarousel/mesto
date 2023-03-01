@@ -4,7 +4,7 @@ const enableValidation = {
   submitButtonSelector: ".popup__submit-button",
   inactiveButtonClass: "popup__submit-button_disabled",
   inputErrorClass: "field_type_error",
-  errorClass: "popup__error_visible",
+  errorClass: "popup__span_error_visible",
 };
 
 function disableSubmit(evt) {
@@ -25,8 +25,8 @@ function enableFormValidation(form, config) {
     toggleButton(form, config);
   });
 
-  addInputListeners(form, config);
   toggleButton(form, config);
+  addInputListeners(form, config);
 }
 
 /**
