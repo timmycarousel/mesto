@@ -19,7 +19,7 @@
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  margin-top: 18px;
+  margin-top: 13px;
   margin-bottom: 37px;
 }
 
@@ -33,6 +33,7 @@
     height: 46px;
     font-size: 14px;
     line-height: 17px;
-    margin-top: 45px;
+    margin-top: 5px;
+    margin-bottom: 26px;
   }
 }

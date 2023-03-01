@@ -19,9 +19,30 @@ function validationConfig(config) {
   });
 }
 
+function toggleButton(form, config) {
+  const buttonSubmit = form.querySelector(config.submitButtonSelector);
+  const isFormValid = form.checkValidity();
+
+  buttonSubmit.disabled = !isFormValid;
+  buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
+}
+
+function addInputListeners(form, config) {
+  const inputList = Array.from(form.querySelectorAll(config.inputSelector));
+
+  inputList.forEach((item) => {
+    item.addEventListener("input", (evt) => {
+      handleFormInput(evt, config);
+    });
+  });
+}
+
 function enableFormValidation(form, config) {
   form.addEventListener("submit", disableSubmit);
   form.addEventListener("input", () => {
+    toggleButton(form, config);
+  });
+  form.addEventListener("mouseover", () => {
     toggleButton(form, config);
   });
 
@@ -47,24 +68,6 @@ function handleFormInput(evt, config) {
     input.classList.add(config.inputErrorClass);
     errorElement.textContent = input.validationMessage;
   }
-}
-
-function toggleButton(form, config) {
-  const buttonSubmit = form.querySelector(config.submitButtonSelector);
-  const isFormValid = form.checkValidity();
-
-  buttonSubmit.disabled = !isFormValid;
-  buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
-}
-
-function addInputListeners(form, config) {
-  const inputList = Array.from(form.querySelectorAll(config.inputSelector));
-
-  inputList.forEach((item) => {
-    item.addEventListener("input", (evt) => {
-      handleFormInput(evt, config);
-    });
-  });
 }
 
 validationConfig(enableValidation);
