@@ -22,7 +22,6 @@ function validationConfig(config) {
 function toggleButton(form, config) {
   const buttonSubmit = form.querySelector(config.submitButtonSelector);
   const isFormValid = form.checkValidity();
-
   buttonSubmit.disabled = !isFormValid;
   buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
 }
@@ -42,11 +41,12 @@ function enableFormValidation(form, config) {
   form.addEventListener("input", () => {
     toggleButton(form, config);
   });
-  form.addEventListener("mouseover", () => {
-    toggleButton(form, config);
-  });
-
   toggleButton(form, config);
+  form.addEventListener("reset", () => {
+    setTimeout(() => {
+      toggleButton(form, config);
+    }, 0);
+  });
   addInputListeners(form, config);
 }
 
