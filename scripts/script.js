@@ -1,5 +1,3 @@
-import { enableValidation, toggleButton } from "./validate.js";
-
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
 const popupUser = page.querySelector(".popup_type_user");
@@ -133,3 +131,14 @@ popupUserField.addEventListener("submit", function (evt) {
 buttonOpenPopupAddCard.addEventListener("click", function () {
   openPopup(popupCard);
 });
+
+const enableValidation = {
+  formSelector: ".popup__field",
+  inputSelector: ".field",
+  submitButtonSelector: ".popup__submit-button",
+  inactiveButtonClass: "popup__submit-button_disabled",
+  inputErrorClass: "field_type_error",
+  errorClass: "popup__span_error_visible",
+};
+
+validationConfig(enableValidation);

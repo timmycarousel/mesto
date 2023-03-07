@@ -1,12 +1,3 @@
-export const enableValidation = {
-  formSelector: ".popup__field",
-  inputSelector: ".field",
-  submitButtonSelector: ".popup__submit-button",
-  inactiveButtonClass: "popup__submit-button_disabled",
-  inputErrorClass: "field_type_error",
-  errorClass: "popup__span_error_visible",
-};
-
 /**
  * убираем сабмит по умолчанию
  * @param {*} evt событие
@@ -28,7 +19,7 @@ function validationConfig(config) {
  * @param {*} form форма
  * @param {*} config конфиг
  */
-export const toggleButton = (form, config) => {
+const toggleButton = (form, config) => {
   const buttonSubmit = form.querySelector(config.submitButtonSelector);
   const isFormValid = form.checkValidity();
   buttonSubmit.disabled = !isFormValid;
@@ -90,5 +81,3 @@ function handleFormInput(evt, config) {
     errorElement.textContent = input.validationMessage;
   }
 }
-
-validationConfig(enableValidation);
