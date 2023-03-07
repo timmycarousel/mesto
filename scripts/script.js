@@ -25,6 +25,15 @@ const fullImg = page.querySelector(".popup__img");
 
 const popupImg = page.querySelector(".popup_type_img");
 
+const enableValidation = {
+  formSelector: ".popup__field",
+  inputSelector: ".field",
+  submitButtonSelector: ".popup__submit-button",
+  inactiveButtonClass: "popup__submit-button_disabled",
+  inputErrorClass: "field_type_error",
+  errorClass: "popup__span_error_visible",
+};
+
 function openPopup(popup) {
   popup.classList.add("popup_active");
   document.addEventListener("keydown", closeEsc);
@@ -66,14 +75,14 @@ const createCard = ({ name, link }) => {
   elementImg.alt = name;
   placeElement.querySelector(".element__text").textContent = name; // название
 
-  const toggleLike = () => {
+  function toggleLike() {
     likeButton.classList.toggle("element__like-button_active");
-  };
+  }
 
   const trashButton = placeElement.querySelector(".element__trash");
-  const removeCard = () => {
+  function removeCard() {
     placeElement.remove();
-  };
+  }
 
   trashButton.addEventListener("click", removeCard);
   likeButton.addEventListener("click", toggleLike);
@@ -87,11 +96,11 @@ const createCard = ({ name, link }) => {
   return placeElement;
 };
 
-const render = () => {
+function render() {
   initialCards.forEach((element) => {
     container.append(createCard(element));
   });
-};
+}
 
 render();
 
@@ -122,14 +131,5 @@ popupUserField.addEventListener("submit", function (evt) {
 buttonOpenPopupAddCard.addEventListener("click", function () {
   openPopup(popupCard);
 });
-
-const enableValidation = {
-  formSelector: ".popup__field",
-  inputSelector: ".field",
-  submitButtonSelector: ".popup__submit-button",
-  inactiveButtonClass: "popup__submit-button_disabled",
-  inputErrorClass: "field_type_error",
-  errorClass: "popup__span_error_visible",
-};
 
 validationConfig(enableValidation);

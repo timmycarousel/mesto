@@ -19,19 +19,19 @@ function validationConfig(config) {
  * @param {*} form форма
  * @param {*} config конфиг
  */
-const toggleButton = (form, config) => {
+function toggleButton(form, config) {
   const buttonSubmit = form.querySelector(config.submitButtonSelector);
   const isFormValid = form.checkValidity();
   buttonSubmit.disabled = !isFormValid;
   buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
-};
+}
 
 /**
  * добавление слушателей ввода
  * @param {*} form форма
  * @param {*} config конфиг
  */
-const addInputListeners = (form, config) => {
+function addInputListeners(form, config) {
   const inputList = Array.from(form.querySelectorAll(config.inputSelector));
 
   inputList.forEach((item) => {
@@ -39,7 +39,7 @@ const addInputListeners = (form, config) => {
       handleFormInput(evt, config);
     });
   });
-};
+}
 
 /**
  * добавляем слушатели на форму и переключаем кнопку
