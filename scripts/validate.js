@@ -1,4 +1,4 @@
-const enableValidation = {
+export const enableValidation = {
   formSelector: ".popup__field",
   inputSelector: ".field",
   submitButtonSelector: ".popup__submit-button",
@@ -7,6 +7,10 @@ const enableValidation = {
   errorClass: "popup__span_error_visible",
 };
 
+/**
+ * убираем сабмит по умолчанию
+ * @param {*} evt событие
+ */
 function disableSubmit(evt) {
   evt.preventDefault();
 }
@@ -19,14 +23,24 @@ function validationConfig(config) {
   });
 }
 
-function toggleButton(form, config) {
+/**
+ * переключение кнопки
+ * @param {*} form форма
+ * @param {*} config конфиг
+ */
+export const toggleButton = (form, config) => {
   const buttonSubmit = form.querySelector(config.submitButtonSelector);
   const isFormValid = form.checkValidity();
   buttonSubmit.disabled = !isFormValid;
   buttonSubmit.classList.toggle(config.inactiveButtonClass, !isFormValid);
-}
+};
 
-function addInputListeners(form, config) {
+/**
+ * добавление слушателей ввода
+ * @param {*} form форма
+ * @param {*} config конфиг
+ */
+const addInputListeners = (form, config) => {
   const inputList = Array.from(form.querySelectorAll(config.inputSelector));
 
   inputList.forEach((item) => {
@@ -34,14 +48,21 @@ function addInputListeners(form, config) {
       handleFormInput(evt, config);
     });
   });
-}
+};
 
+/**
+ * добавляем слушатели на форму и переключаем кнопку
+ * @param {*} form форма
+ * @param {*} config  конфиг
+ */
 function enableFormValidation(form, config) {
-  form.addEventListener("submit", disableSubmit);
+  form.addEventListener("submit", disableSubmit); // отключаем отправку формы
   form.addEventListener("input", () => {
     toggleButton(form, config);
   });
   toggleButton(form, config);
+
+  //сброс формы
   form.addEventListener("reset", () => {
     setTimeout(() => {
       toggleButton(form, config);

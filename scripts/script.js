@@ -1,3 +1,5 @@
+import { enableValidation, toggleButton } from "./validate.js";
+
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
 const popupUser = page.querySelector(".popup_type_user");
@@ -31,6 +33,7 @@ const popupImg = page.querySelector(".popup_type_img");
 // }));
 
 function openPopup(popup) {
+  // formSelector.reset();
   popup.classList.add("popup_active");
   document.addEventListener("keydown", closeEsc);
   popup.addEventListener("mousedown", clickOverlayClosePopup);
@@ -102,7 +105,7 @@ const render = () => {
 render();
 
 popupCardField.addEventListener("submit", function (evt) {
-  evt.preventDefault();
+  // evt.preventDefault();
   openPopup(popupCard);
   const placeElement = createCard({
     name: cardInput.value,
@@ -117,10 +120,11 @@ buttonEdit.addEventListener("click", function () {
   openPopup(popupUser);
   nameInput.value = name.textContent;
   infoInput.value = info.textContent;
+  toggleButton(popupUserField, enableValidation);
 });
 
 popupUserField.addEventListener("submit", function (evt) {
-  evt.preventDefault();
+  // evt.preventDefault();
   info.textContent = infoInput.value;
   name.textContent = nameInput.value;
   closePopup(popupUser);
