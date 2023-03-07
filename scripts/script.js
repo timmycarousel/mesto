@@ -25,13 +25,7 @@ const fullImg = page.querySelector(".popup__img");
 
 const popupImg = page.querySelector(".popup_type_img");
 
-// const cardsInfo = initialCards.map((item) => ({
-//   name: item.name,
-//   link: item.link,
-// }));
-
 function openPopup(popup) {
-  // formSelector.reset();
   popup.classList.add("popup_active");
   document.addEventListener("keydown", closeEsc);
   popup.addEventListener("mousedown", clickOverlayClosePopup);
@@ -52,7 +46,6 @@ function closeEsc(evt) {
 
 function clickOverlayClosePopup(evt) {
   if (evt.target === evt.currentTarget) {
-    // const popupOpened = document.querySelector(".popup_active");
     closePopup(evt.currentTarget);
   }
 }
@@ -103,7 +96,6 @@ const render = () => {
 render();
 
 popupCardField.addEventListener("submit", function (evt) {
-  // evt.preventDefault();
   openPopup(popupCard);
   const placeElement = createCard({
     name: cardInput.value,
@@ -122,7 +114,6 @@ buttonEdit.addEventListener("click", function () {
 });
 
 popupUserField.addEventListener("submit", function (evt) {
-  // evt.preventDefault();
   info.textContent = infoInput.value;
   name.textContent = nameInput.value;
   closePopup(popupUser);
