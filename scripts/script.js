@@ -1,3 +1,6 @@
+import { initialCards } from "./Data.js";
+import { Card } from "./Card.js";
+
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
 const popupUser = page.querySelector(".popup_type_user");
@@ -9,10 +12,15 @@ const infoInput = page.querySelector("#infoValue");
 const name = page.querySelector(".profile-info__name");
 const info = page.querySelector(".profile-info__text");
 
-const popupCard = page.querySelector(".popup_type_card");
 const buttonOpenPopupAddCard = page.querySelector(".profile__add-button");
 
+const popupCard = page.querySelector(".popup_type_card");
 const popupCardField = page.querySelector(".popup__field_card");
+
+const headImg = page.querySelector(".popup__heading");
+const fullImg = page.querySelector(".popup__img");
+const popupImg = page.querySelector(".popup_type_img");
+
 const cardInput = page.querySelector("#newValue");
 const urlInput = page.querySelector("#UrlValue");
 
@@ -20,19 +28,11 @@ const container = document.querySelector(".elements");
 const cardTemplate = document.querySelector(".card-template").content;
 const template = cardTemplate.querySelector(".element");
 
-const headImg = page.querySelector(".popup__heading");
-const fullImg = page.querySelector(".popup__img");
-
-const popupImg = page.querySelector(".popup_type_img");
-
-const enableValidation = {
-  formSelector: ".popup__field",
-  inputSelector: ".field",
-  submitButtonSelector: ".popup__submit-button",
-  inactiveButtonClass: "popup__submit-button_disabled",
-  inputErrorClass: "field_type_error",
-  errorClass: "popup__span_error_visible",
-};
+initialCards.forEach((item) => {
+  const card = new Card(item, ".card-template", openPopup);
+  const cardElement = card._generateCard();
+  container.append(cardElement);
+});
 
 function openPopup(popup) {
   popup.classList.add("popup_active");
@@ -40,7 +40,7 @@ function openPopup(popup) {
   popup.addEventListener("mousedown", clickOverlayClosePopup);
 }
 
-function closePopup(popup) {
+export function closePopup(popup) {
   popup.classList.remove("popup_active");
   document.removeEventListener("keydown", closeEsc);
   popup.removeEventListener("mousedown", clickOverlayClosePopup);
@@ -66,70 +66,72 @@ closeButtons.forEach(function (button) {
   });
 });
 
-const createCard = ({ name, link }) => {
-  const placeElement = template.cloneNode(true); // клонируем из cardTemplate в placeElement
-  const elementImg = placeElement.querySelector(".element__img");
-  const likeButton = placeElement.querySelector(".element__like-button"); // лайки
+// const createCard = ({ name, link }) => {
+//   const placeElement = template.cloneNode(true); // клонируем из cardTemplate в placeElement
+//   const elementImg = placeElement.querySelector(".element__img");
+//   const likeButton = placeElement.querySelector(".element__like-button"); // лайки
 
-  elementImg.src = link;
-  elementImg.alt = name;
-  placeElement.querySelector(".element__text").textContent = name; // название
+//   elementImg.src = link;
+//   elementImg.alt = name;
+//   placeElement.querySelector(".element__text").textContent = name; // название
 
-  function toggleLike() {
-    likeButton.classList.toggle("element__like-button_active");
-  }
+//   const openImgPopup = () => {
+//     openPopup(popupImg);
+//     headImg.textContent = name;
+//     fullImg.src = link;
+//     fullImg.alt = name;
+//   };
 
-  const trashButton = placeElement.querySelector(".element__trash");
-  function removeCard() {
-    placeElement.remove();
-  }
+//   function toggleLike() {
+//     likeButton.classList.toggle("element__like-button_active");
+//   }
 
-  trashButton.addEventListener("click", removeCard);
-  likeButton.addEventListener("click", toggleLike);
-  elementImg.addEventListener("click", function () {
-    openPopup(popupImg);
-    headImg.textContent = name;
-    fullImg.src = link;
-    fullImg.alt = name;
-  });
+//   const trashButton = placeElement.querySelector(".element__trash");
+//   function removeCard() {
+//     placeElement.remove();
+//   }
 
-  return placeElement;
-};
+//   trashButton.addEventListener("click", removeCard);
+//   likeButton.addEventListener("click", toggleLike);
+//   elementImg.addEventListener("click", openImgPopup);
 
-function render() {
-  initialCards.forEach((element) => {
-    container.append(createCard(element));
-  });
-}
+//   return placeElement;
+// };
 
-render();
+// const render = () => {
+//   initialCards.forEach((element) => {
+//     container.append(createCard(element));
+//   });
+// };
 
-popupCardField.addEventListener("submit", function (evt) {
-  openPopup(popupCard);
-  const placeElement = createCard({
-    name: cardInput.value,
-    link: urlInput.value,
-  });
-  container.prepend(placeElement);
-  closePopup(popupCard);
-  evt.target.reset();
-});
+// render();
 
-buttonEdit.addEventListener("click", function () {
-  openPopup(popupUser);
-  nameInput.value = name.textContent;
-  infoInput.value = info.textContent;
-  toggleButton(popupUserField, enableValidation);
-});
+// popupCardField.addEventListener("submit", function (evt) {
+//   openPopup(popupCard);
+//   const placeElement = createCard({
+//     name: cardInput.value,
+//     link: urlInput.value,
+//   });
+//   container.prepend(placeElement);
+//   closePopup(popupCard);
+//   evt.target.reset();
+// });
 
-popupUserField.addEventListener("submit", function (evt) {
-  info.textContent = infoInput.value;
-  name.textContent = nameInput.value;
-  closePopup(popupUser);
-});
+// buttonEdit.addEventListener("click", function () {
+//   openPopup(popupUser);
+//   nameInput.value = name.textContent;
+//   infoInput.value = info.textContent;
+//   toggleButton(popupUserField, enableValidation);
+// });
 
-buttonOpenPopupAddCard.addEventListener("click", function () {
-  openPopup(popupCard);
-});
+// popupUserField.addEventListener("submit", function (evt) {
+//   info.textContent = infoInput.value;
+//   name.textContent = nameInput.value;
+//   closePopup(popupUser);
+// });
 
-validationConfig(enableValidation);
+// buttonOpenPopupAddCard.addEventListener("click", function () {
+//   openPopup(popupCard);
+// });
+
+// validationConfig(enableValidation);

@@ -1,3 +1,5 @@
+
+//данные для карточек
 const initialCards = [
   {
     name: "Тверь",
@@ -24,3 +26,17 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
+
+
+//Данные для валидации
+const enableValidation = {
+  formSelector: ".popup__field",
+  inputSelector: ".field",
+  submitButtonSelector: ".popup__submit-button",
+  inactiveButtonClass: "popup__submit-button_disabled",
+  inputErrorClass: "field_type_error",
+  errorClass: "popup__span_error_visible",
+};
+
+//экспорт
+export { initialCards, enableValidation };
