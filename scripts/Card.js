@@ -1,4 +1,5 @@
 class Card {
+  //конструктор с элементом, темплейт-селектором и функцией открытия Popup
   constructor(data, templateSelector, openPopup) {
     this._name = data.name;
     this._link = data.link;
@@ -8,7 +9,7 @@ class Card {
     this._openPopup = openPopup;
   }
 
-  //получаем шаблон карточки
+  //приватный метод получения шаблона карточки из массива
   _getTemplate() {
     const template = document
       .querySelector(this._templateSelector)
@@ -18,8 +19,8 @@ class Card {
     return template;
   }
 
-  //генерируем карточку
-  _generateCard() {
+  //публичный метод генерации карточки
+  generateCard() {
     this._element = this._getTemplate();
     this._setEventListener();
 
@@ -29,7 +30,7 @@ class Card {
 
     return this._element;
   }
-  //открытие попапа картинки
+  //приватный метод открытия попапа картинки
   _openImgPopup() {
     const headImg = document.querySelector(".popup__heading");
     const fullImg = document.querySelector(".popup__img");
@@ -41,28 +42,32 @@ class Card {
     fullImg.src = this._link;
     fullImg.alt = this._name;
   }
-  //функция переключения лайка
+  //приватный метод переключения лайка
   _toggleLike() {
     this._element
       .querySelector(".element__like-button")
       .classList.toggle("element__like-button_active");
   }
-
+  //приватный метод удаления карточки
   _removeCard() {
     this._element.remove();
+    this._element = null;
   }
-  //слушатели
+  //приватные слушатели
+  //удаления карточки
   _setEventListener() {
     this._element
       .querySelector(".element__trash")
       .addEventListener("click", () => {
         this._removeCard();
       });
+    //лайков
     this._element
       .querySelector(".element__like-button")
       .addEventListener("click", () => {
         this._toggleLike();
       });
+    //открытия попапа картинки
     this._element
       .querySelector(".element__img")
       .addEventListener("click", () => {
@@ -70,5 +75,5 @@ class Card {
       });
   }
 }
-
+//экспорт класса "Card"
 export { Card };

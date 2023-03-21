@@ -1,4 +1,4 @@
-import { initialCards } from "./Data.js";
+import { initialCards, object } from "./Data.js";
 import { Card } from "./Card.js";
 
 const page = document.querySelector(".page");
@@ -32,7 +32,7 @@ const template = cardTemplate.querySelector(".element");
 
 initialCards.forEach((item) => {
   const card = new Card(item, ".card-template", openPopup);
-  const cardElement = card._generateCard();
+  const cardElement = card.generateCard();
   container.append(cardElement);
 });
 
@@ -68,25 +68,48 @@ closeButtons.forEach(function (button) {
   });
 });
 
+//добавляем новую карточку
 function addNewCard(evt) {
   evt.preventDefault();
-  const newElement = {
+  //создаем объект с данными из полей ввода
+  const newCardElement = {
     name: cardInput.value,
     link: urlInput.value,
   };
-  const newCard = new Card(newElement, ".card-template", openPopup);
-  const cardNewElement = newCard._generateCard(".card-template");
+  const newCard = new Card(newCardElement, ".card-template", openPopup);
+  const cardNewElement = newCard.generateCard(".card-template");
   submitButton.classList.add("popup__submit-button_disabled");
   container.prepend(cardNewElement);
   closePopup(popupCard);
   evt.target.reset();
 }
 
+//слушатель сабмита карточки
 popupCardField.addEventListener("submit", addNewCard);
 
+//слушатель добавления карточки
 buttonOpenPopupAddCard.addEventListener("click", function () {
   openPopup(popupCard);
 });
+
+//слушатель кнопки редактирования пользователя
+buttonEdit.addEventListener("click", function () {
+  openPopup(popupUser);
+  nameInput.value = name.textContent;
+  infoInput.value = info.textContent;
+  toggleButton(popupUserField, object);
+});
+
+//слушатель заполния формы пользователя
+popupUserField.addEventListener("submit", function (evt) {
+  evt.preventDefault();
+  info.textContent = infoInput.value;
+  name.textContent = nameInput.value;
+  closePopup(popupUser);
+});
+
+const profileValidation = new FormValidator(object, popupUserField);
+profileValidation.enableFormValidation();
 
 // const createCard = ({ name, link }) => {
 //   const placeElement = template.cloneNode(true); // клонируем из cardTemplate в placeElement
@@ -143,7 +166,7 @@ buttonOpenPopupAddCard.addEventListener("click", function () {
 //   openPopup(popupUser);
 //   nameInput.value = name.textContent;
 //   infoInput.value = info.textContent;
-//   toggleButton(popupUserField, enableValidation);
+//   toggleButton(popupUserField, object);
 // });
 
 // popupUserField.addEventListener("submit", function (evt) {
@@ -156,4 +179,4 @@ buttonOpenPopupAddCard.addEventListener("click", function () {
 //   openPopup(popupCard);
 // });
 
-// validationConfig(enableValidation);
+// enableValidation(object);

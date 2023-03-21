@@ -29,7 +29,7 @@ const initialCards = [
 
 
 //Данные для валидации
-const enableValidation = {
+const object = {
   formSelector: ".popup__field",
   inputSelector: ".field",
   submitButtonSelector: ".popup__submit-button",
@@ -39,4 +39,4 @@ const enableValidation = {
 };
 
 //экспорт
-export { initialCards, enableValidation };
+export { initialCards, object };
