@@ -14,6 +14,8 @@ const info = page.querySelector(".profile-info__text");
 
 const buttonOpenPopupAddCard = page.querySelector(".profile__add-button");
 
+const submitButton = page.querySelector(".popup__submit-button");
+
 const popupCard = page.querySelector(".popup_type_card");
 const popupCardField = page.querySelector(".popup__field_card");
 
@@ -64,6 +66,26 @@ closeButtons.forEach(function (button) {
   button.addEventListener("click", function () {
     return closePopup(popup);
   });
+});
+
+function addNewCard(evt) {
+  evt.preventDefault();
+  const newElement = {
+    name: cardInput.value,
+    link: urlInput.value,
+  };
+  const newCard = new Card(newElement, ".card-template", openPopup);
+  const cardNewElement = newCard._generateCard(".card-template");
+  submitButton.classList.add("popup__submit-button_disabled");
+  container.prepend(cardNewElement);
+  closePopup(popupCard);
+  evt.target.reset();
+}
+
+popupCardField.addEventListener("submit", addNewCard);
+
+buttonOpenPopupAddCard.addEventListener("click", function () {
+  openPopup(popupCard);
 });
 
 // const createCard = ({ name, link }) => {
