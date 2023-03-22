@@ -9,7 +9,8 @@ class FormValidator {
   }
 
   enableValidation() {
-    this._formElement.addEventListener("submit", this._disableSubmit); // отключаем отправку формы
+    this._formElement.addEventListener("submit", this._disableSubmit);
+    // отключаем отправку формы
     this._formElement.addEventListener("input", () => {
       this._toggleButton();
     });
