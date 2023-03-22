@@ -1,6 +1,6 @@
-const headImg = document.querySelector(".popup__heading");
-const fullImg = document.querySelector(".popup__img");
 const popupImg = document.querySelector(".popup_type_img");
+const headImg = popupImg.querySelector(".popup__heading");
+const fullImg = popupImg.querySelector(".popup__img");
 
 class Card {
   //конструктор с элементом, темплейт-селектором и функцией открытия Popup

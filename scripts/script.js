@@ -6,7 +6,6 @@ const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
 const popupUser = page.querySelector(".popup_type_user");
 const closeButtons = page.querySelectorAll(".popup__close-icon");
-const popupUserField = page.querySelector(".popup__field_user");
 
 const nameInput = page.querySelector("#nameValue");
 const infoInput = page.querySelector("#infoValue");
@@ -15,21 +14,22 @@ const info = page.querySelector(".profile-info__text");
 
 const buttonOpenPopupAddCard = page.querySelector(".profile__add-button");
 
-const submitButton = page.querySelector(".popup__submit-button");
-
 const popupCard = page.querySelector(".popup_type_card");
-const popupCardField = page.querySelector(".popup__field_card");
 
-// const headImg = page.querySelector(".popup__heading");
-// const fullImg = page.querySelector(".popup__img");
-// const popupImg = page.querySelector(".popup_type_img");
+const popupField = page.querySelectorAll(".popup__field");
+
+const popupUserField = page.querySelector(".popup__field_user");
+const popupCardField = page.querySelector(".popup__field_card");
 
 const cardInput = page.querySelector("#newValue");
 const urlInput = page.querySelector("#UrlValue");
 
 const container = document.querySelector(".elements");
-const cardTemplate = document.querySelector(".card-template").content;
-// const template = cardTemplate.querySelector(".element");
+
+popupField.forEach((formElement) => {
+  const validator = new FormValidator(object, formElement);
+  validator.enableValidation();
+});
 
 function createCard(data, templateSelector) {
   const card = new Card(data, templateSelector, openPopup);
@@ -38,7 +38,6 @@ function createCard(data, templateSelector) {
 
 initialCards.forEach((item) => {
   const card = createCard(item, ".card-template");
-  // const cardElement = card.generateCard();
   container.append(card);
 });
 
@@ -93,19 +92,14 @@ popupCardField.addEventListener("submit", addNewCard);
 
 //слушатель добавления карточки
 buttonOpenPopupAddCard.addEventListener("click", function () {
-  const validator = new FormValidator(object, popupCardField);
-  validator.enableValidation();
   openPopup(popupCard);
 });
 
 //слушатель кнопки редактирования пользователя
 buttonEdit.addEventListener("click", function () {
   openPopup(popupUser);
-  // resetSpan(popupUser);
   nameInput.value = name.textContent;
   infoInput.value = info.textContent;
-  const validator = new FormValidator(object, popupUserField);
-  validator.enableValidation();
 });
 
 //слушатель заполния формы пользователя
