@@ -36,6 +36,7 @@ class FormValidator {
     const _isFormValid = this._formElement.checkValidity();
     _buttonSubmit.disabled = !_isFormValid;
     _buttonSubmit.classList.toggle(this._inactiveButtonClass, !_isFormValid);
+
   }
 
   _addInputListeners() {
