@@ -1,3 +1,6 @@
+const headImg = document.querySelector(".popup__heading");
+const fullImg = document.querySelector(".popup__img");
+const popupImg = document.querySelector(".popup_type_img");
 
 class Card {
   //конструктор с элементом, темплейт-селектором и функцией открытия Popup
@@ -23,20 +26,17 @@ class Card {
   //публичный метод генерации карточки
   generateCard() {
     this._element = this._getTemplate();
+    const elementImg = this._element.querySelector(".element__img");
     this._setEventListener();
 
-    this._element.querySelector(".element__img").src = this._link;
-    this._element.querySelector(".element__img").alt = this._name;
+    elementImg.src = this._link;
+    elementImg.alt = this._name;
     this._element.querySelector(".element__text").textContent = this._name;
 
     return this._element;
   }
   //приватный метод открытия попапа картинки
   _openImgPopup() {
-    const headImg = document.querySelector(".popup__heading");
-    const fullImg = document.querySelector(".popup__img");
-    const popupImg = document.querySelector(".popup_type_img");
-
     this._element.querySelector(".element__img");
     this._openPopup(popupImg);
     headImg.textContent = this._name;

@@ -31,11 +31,30 @@ const container = document.querySelector(".elements");
 const cardTemplate = document.querySelector(".card-template").content;
 // const template = cardTemplate.querySelector(".element");
 
+function createCard(data, templateSelector) {
+  const card = new Card(data, templateSelector, openPopup);
+  return card.generateCard();
+}
+
 initialCards.forEach((item) => {
-  const card = new Card(item, ".card-template", openPopup);
-  const cardElement = card.generateCard();
-  container.append(cardElement);
+  const card = createCard(item, ".card-template");
+  // const cardElement = card.generateCard();
+  container.append(card);
 });
+
+//добавляем новую карточку
+function addNewCard(evt) {
+  evt.preventDefault();
+  //создаем объект с данными из полей ввода
+  const newCardElement = {
+    name: cardInput.value,
+    link: urlInput.value,
+  };
+  const newCard = createCard(newCardElement, ".card-template");
+  container.prepend(newCard);
+  closePopup(popupCard);
+  evt.target.reset();
+}
 
 function openPopup(popup) {
   popup.classList.add("popup_active");
@@ -69,22 +88,6 @@ closeButtons.forEach(function (button) {
   });
 });
 
-//добавляем новую карточку
-function addNewCard(evt) {
-  evt.preventDefault();
-  //создаем объект с данными из полей ввода
-  const newCardElement = {
-    name: cardInput.value,
-    link: urlInput.value,
-  };
-  const newCard = new Card(newCardElement, ".card-template", openPopup);
-  const cardNewElement = newCard.generateCard(".card-template");
-  submitButton.classList.add("popup__submit-button_disabled");
-  container.prepend(cardNewElement);
-  closePopup(popupCard);
-  evt.target.reset();
-}
-
 //слушатель сабмита карточки
 popupCardField.addEventListener("submit", addNewCard);
 
@@ -98,6 +101,7 @@ buttonOpenPopupAddCard.addEventListener("click", function () {
 //слушатель кнопки редактирования пользователя
 buttonEdit.addEventListener("click", function () {
   openPopup(popupUser);
+  // resetSpan(popupUser);
   nameInput.value = name.textContent;
   infoInput.value = info.textContent;
   const validator = new FormValidator(object, popupUserField);
@@ -111,76 +115,3 @@ popupUserField.addEventListener("submit", function (evt) {
   name.textContent = nameInput.value;
   closePopup(popupUser);
 });
-
-// const profileValidation = new FormValidator(object, popupUserField);
-// profileValidation.enableFormValidation();
-
-// const createCard = ({ name, link }) => {
-//   const placeElement = template.cloneNode(true); // клонируем из cardTemplate в placeElement
-//   const elementImg = placeElement.querySelector(".element__img");
-//   const likeButton = placeElement.querySelector(".element__like-button"); // лайки
-
-//   elementImg.src = link;
-//   elementImg.alt = name;
-//   placeElement.querySelector(".element__text").textContent = name; // название
-
-//   const openImgPopup = () => {
-//     openPopup(popupImg);
-//     headImg.textContent = name;
-//     fullImg.src = link;
-//     fullImg.alt = name;
-//   };
-
-//   function toggleLike() {
-//     likeButton.classList.toggle("element__like-button_active");
-//   }
-
-//   const trashButton = placeElement.querySelector(".element__trash");
-//   function removeCard() {
-//     placeElement.remove();
-//   }
-
-//   trashButton.addEventListener("click", removeCard);
-//   likeButton.addEventListener("click", toggleLike);
-//   elementImg.addEventListener("click", openImgPopup);
-
-//   return placeElement;
-// };
-
-// const render = () => {
-//   initialCards.forEach((element) => {
-//     container.append(createCard(element));
-//   });
-// };
-
-// render();
-
-// popupCardField.addEventListener("submit", function (evt) {
-//   openPopup(popupCard);
-//   const placeElement = createCard({
-//     name: cardInput.value,
-//     link: urlInput.value,
-//   });
-//   container.prepend(placeElement);
-//   closePopup(popupCard);
-//   evt.target.reset();
-// });
-
-// buttonEdit.addEventListener("click", function () {
-//   openPopup(popupUser);
-//   nameInput.value = name.textContent;
-//   infoInput.value = info.textContent;
-//   toggleButton(popupUserField, object);
-// });
-
-// popupUserField.addEventListener("submit", function (evt) {
-//   info.textContent = infoInput.value;
-//   name.textContent = nameInput.value;
-//   closePopup(popupUser);
-// });
-
-// buttonOpenPopupAddCard.addEventListener("click", function () {
-//   openPopup(popupCard);
-// });
-
-// enableValidation(object);
