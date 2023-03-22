@@ -26,10 +26,11 @@ const urlInput = page.querySelector("#UrlValue");
 
 const container = document.querySelector(".elements");
 
-popupField.forEach((formElement) => {
+function enableValidation(formElement) {
   const validator = new FormValidator(object, formElement);
   validator.enableValidation();
-});
+}
+popupField.forEach(enableValidation);
 
 function createCard(data, templateSelector) {
   const card = new Card(data, templateSelector, openPopup);
@@ -52,6 +53,7 @@ function addNewCard(evt) {
   const newCard = createCard(newCardElement, ".card-template");
   container.prepend(newCard);
   closePopup(popupCard);
+
   evt.target.reset();
 }
 
@@ -100,6 +102,8 @@ buttonEdit.addEventListener("click", function () {
   openPopup(popupUser);
   nameInput.value = name.textContent;
   infoInput.value = info.textContent;
+  //валидация формы при открытии попапюзер, чтобы включилась кнопка первый раз
+  enableValidation(popupUserField);
 });
 
 //слушатель заполния формы пользователя
