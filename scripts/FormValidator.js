@@ -1,28 +1,34 @@
 class FormValidator {
-  constructor(object, formElement) {
-    this._inputSelector = object.inputSelector;
-    this._submitButtonSelector = object.submitButtonSelector;
-    this._inactiveButtonClass = object.inactiveButtonClass;
-    this._inputErrorClass = object.inputErrorClass;
-    this._errorClass = object.errorClass;
+  constructor(config, formElement) {
+    this._inputSelector = config.inputSelector;
+    this._submitButtonSelector = config.submitButtonSelector;
+    this._inactiveButtonClass = config.inactiveButtonClass;
+    this._inputErrorClass = config.inputErrorClass;
+    this._errorClass = config.errorClass;
     this._formElement = formElement;
   }
-  enableFormValidation() {
-    // this._formElement.addEventListener("submit", disableSubmit); // отключаем отправку формы
+
+  enableValidation() {
+    this._formElement.addEventListener("submit", this._disableSubmit); // отключаем отправку формы
     this._formElement.addEventListener("input", () => {
-      _toggleButton();
+      this._toggleButton();
     });
-    // _toggleButton();
+    this._toggleButton();
+
     //сброс формы
     this._formElement.addEventListener("reset", () => {
       setTimeout(() => {
-        _toggleButton();
+        this._toggleButton();
       }, 0);
     });
-    // addInputListeners();
+    this._addInputListeners();
   }
 
-  _toggleButton(_formElement, _inactiveButtonClass) {
+  _disableSubmit(evt) {
+    evt.preventDefault();
+  }
+
+  _toggleButton() {
     const _buttonSubmit = this._formElement.querySelector(
       this._submitButtonSelector
     );
@@ -30,21 +36,33 @@ class FormValidator {
     _buttonSubmit.disabled = !_isFormValid;
     _buttonSubmit.classList.toggle(this._inactiveButtonClass, !_isFormValid);
   }
-  // //ДОКРУТИТЬ
-  //     function handleFormInput(evt, config) {
-  //   const input = evt.target;
 
-  //   const inputId = input.id;
-  //   const errorElement = document.querySelector(`#${inputId}-error`);
+  _addInputListeners() {
+    const _inputList = Array.from(
+      this._formElement.querySelectorAll(this._inputSelector)
+    );
 
-  //   if (input.validity.valid) {
-  //     input.classList.remove(config.inputErrorClass);
-  //     errorElement.textContent = " ";
-  //   } else {
-  //     input.classList.add(config.inputErrorClass);
-  //     errorElement.textContent = input.validationMessage;
-  //   }
-  // }
+    _inputList.forEach((item) => {
+      item.addEventListener("input", (evt) => {
+        this._handleFormInput(evt);
+      });
+    });
+  }
+
+  _handleFormInput(evt) {
+    const input = evt.target;
+
+    const _inputId = input.id;
+    const _errorElement = this._formElement.querySelector(`#${_inputId}-error`);
+
+    if (input.validity.valid) {
+      input.classList.remove(this._inputErrorClass);
+      _errorElement.textContent = " ";
+    } else {
+      input.classList.add(this._inputErrorClass);
+      _errorElement.textContent = input.validationMessage;
+    }
+  }
 }
 
 // function disableSubmit(evt) {
@@ -58,7 +76,7 @@ class FormValidator {
 //     enableFormValidation(form, config);
 //   });
 // }
-//  //переключение кнопки
+// //переключение кнопки
 // function toggleButton(form, config) {
 //   const buttonSubmit = form.querySelector(config.submitButtonSelector);
 //   const isFormValid = form.checkValidity();
@@ -108,3 +126,5 @@ class FormValidator {
 //     errorElement.textContent = input.validationMessage;
 //   }
 // }
+
+export { FormValidator };

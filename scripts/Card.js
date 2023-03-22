@@ -1,3 +1,4 @@
+
 class Card {
   //конструктор с элементом, темплейт-селектором и функцией открытия Popup
   constructor(data, templateSelector, openPopup) {

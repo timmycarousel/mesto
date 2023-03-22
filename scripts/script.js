@@ -1,5 +1,6 @@
 import { initialCards, object } from "./Data.js";
 import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
@@ -19,16 +20,16 @@ const submitButton = page.querySelector(".popup__submit-button");
 const popupCard = page.querySelector(".popup_type_card");
 const popupCardField = page.querySelector(".popup__field_card");
 
-const headImg = page.querySelector(".popup__heading");
-const fullImg = page.querySelector(".popup__img");
-const popupImg = page.querySelector(".popup_type_img");
+// const headImg = page.querySelector(".popup__heading");
+// const fullImg = page.querySelector(".popup__img");
+// const popupImg = page.querySelector(".popup_type_img");
 
 const cardInput = page.querySelector("#newValue");
 const urlInput = page.querySelector("#UrlValue");
 
 const container = document.querySelector(".elements");
 const cardTemplate = document.querySelector(".card-template").content;
-const template = cardTemplate.querySelector(".element");
+// const template = cardTemplate.querySelector(".element");
 
 initialCards.forEach((item) => {
   const card = new Card(item, ".card-template", openPopup);
@@ -42,7 +43,7 @@ function openPopup(popup) {
   popup.addEventListener("mousedown", clickOverlayClosePopup);
 }
 
-export function closePopup(popup) {
+function closePopup(popup) {
   popup.classList.remove("popup_active");
   document.removeEventListener("keydown", closeEsc);
   popup.removeEventListener("mousedown", clickOverlayClosePopup);
@@ -89,6 +90,8 @@ popupCardField.addEventListener("submit", addNewCard);
 
 //слушатель добавления карточки
 buttonOpenPopupAddCard.addEventListener("click", function () {
+  const validator = new FormValidator(object, popupCardField);
+  validator.enableValidation();
   openPopup(popupCard);
 });
 
@@ -97,7 +100,8 @@ buttonEdit.addEventListener("click", function () {
   openPopup(popupUser);
   nameInput.value = name.textContent;
   infoInput.value = info.textContent;
-  toggleButton(popupUserField, object);
+  const validator = new FormValidator(object, popupUserField);
+  validator.enableValidation();
 });
 
 //слушатель заполния формы пользователя
@@ -108,8 +112,8 @@ popupUserField.addEventListener("submit", function (evt) {
   closePopup(popupUser);
 });
 
-const profileValidation = new FormValidator(object, popupUserField);
-profileValidation.enableFormValidation();
+// const profileValidation = new FormValidator(object, popupUserField);
+// profileValidation.enableFormValidation();
 
 // const createCard = ({ name, link }) => {
 //   const placeElement = template.cloneNode(true); // клонируем из cardTemplate в placeElement
