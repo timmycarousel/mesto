@@ -85,7 +85,7 @@ function clickOverlayClosePopup(evt) {
 closeButtons.forEach(function (button) {
   const popup = button.closest(".popup");
   button.addEventListener("click", function () {
-    return closePopup(popup);
+    closePopup(popup);
   });
 });
 
@@ -102,8 +102,6 @@ buttonEdit.addEventListener("click", function () {
   openPopup(popupUser);
   nameInput.value = name.textContent;
   infoInput.value = info.textContent;
-  //валидация формы при открытии попапюзер, чтобы включилась кнопка первый раз
-  enableValidation(popupUserField);
 });
 
 //слушатель заполния формы пользователя
