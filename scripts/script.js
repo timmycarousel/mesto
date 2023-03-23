@@ -1,4 +1,4 @@
-import { initialCards, object } from "./Data.js";
+import { initialCards, validationConfig } from "./Data.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 
@@ -16,10 +16,10 @@ const buttonOpenPopupAddCard = page.querySelector(".profile__add-button");
 
 const popupCard = page.querySelector(".popup_type_card");
 
-const popupField = page.querySelectorAll(".popup__field");
+const forms = page.querySelectorAll(".popup__field");
 
-const popupUserField = page.querySelector(".popup__field_user");
-const popupCardField = page.querySelector(".popup__field_card");
+const popupUserForm = page.querySelector(".popup__field_user");
+const popupCardForm = page.querySelector(".popup__field_card");
 
 const cardInput = page.querySelector("#newValue");
 const urlInput = page.querySelector("#UrlValue");
@@ -27,10 +27,10 @@ const urlInput = page.querySelector("#UrlValue");
 const container = document.querySelector(".elements");
 
 function enableValidation(formElement) {
-  const validator = new FormValidator(object, formElement);
+  const validator = new FormValidator(validationConfig, formElement);
   validator.enableValidation();
 }
-popupField.forEach(enableValidation);
+forms.forEach(enableValidation);
 
 function createCard(data, templateSelector) {
   const card = new Card(data, templateSelector, openPopup);
@@ -90,7 +90,7 @@ closeButtons.forEach(function (button) {
 });
 
 //слушатель сабмита карточки
-popupCardField.addEventListener("submit", addNewCard);
+popupCardForm.addEventListener("submit", addNewCard);
 
 //слушатель добавления карточки
 buttonOpenPopupAddCard.addEventListener("click", function () {
@@ -105,7 +105,7 @@ buttonEdit.addEventListener("click", function () {
 });
 
 //слушатель заполния формы пользователя
-popupUserField.addEventListener("submit", function (evt) {
+popupUserForm.addEventListener("submit", function (evt) {
   evt.preventDefault();
   info.textContent = infoInput.value;
   name.textContent = nameInput.value;
