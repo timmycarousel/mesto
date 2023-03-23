@@ -17,7 +17,6 @@ const buttonOpenPopupAddCard = page.querySelector(".profile__add-button");
 const popupCard = page.querySelector(".popup_type_card");
 
 const forms = page.querySelectorAll(".popup__field");
-
 const popupUserForm = page.querySelector(".popup__field_user");
 const popupCardForm = page.querySelector(".popup__field_card");
 
