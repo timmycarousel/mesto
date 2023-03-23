@@ -11,9 +11,7 @@ const nameInput = page.querySelector("#nameValue");
 const infoInput = page.querySelector("#infoValue");
 const name = page.querySelector(".profile-info__name");
 const info = page.querySelector(".profile-info__text");
-
 const buttonOpenPopupAddCard = page.querySelector(".profile__add-button");
-
 const popupCard = page.querySelector(".popup_type_card");
 
 const forms = page.querySelectorAll(".popup__field");
