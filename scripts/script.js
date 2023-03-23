@@ -72,7 +72,7 @@ function closePopup(popup) {
 function closeEsc(evt) {
   if (evt.key === "Escape") {
     const popupOpened = document.querySelector(".popup_active");
-    return closePopup(popupOpened);
+    closePopup(popupOpened);
   }
 }
 
