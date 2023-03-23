@@ -28,7 +28,6 @@ class FormValidator {
   _disableSubmit(evt) {
     evt.preventDefault();
   }
-
   _toggleButton() {
     const _buttonSubmit = this._formElement.querySelector(
       this._submitButtonSelector
