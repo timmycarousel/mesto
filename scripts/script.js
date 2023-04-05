@@ -1,6 +1,7 @@
 import { initialCards, validationConfig } from "./Data.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
+import { Section } from "./section.js";
 
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
@@ -33,10 +34,23 @@ function createCard(data, templateSelector) {
   return card.generateCard();
 }
 
-initialCards.forEach((item) => {
-  const card = createCard(item, ".card-template");
-  container.append(card);
-});
+// initialCards.forEach((item) => {
+//   const card = createCard(item, ".card-template");
+//   container.append(card);
+// });
+
+const cardSection = new Section(
+  {
+    items: initialCards,
+    renderer: (item) => {
+      const card = createCard(item, ".card-template");
+      cardSection.addItem(card);
+    },
+  },
+  ".elements"
+);
+
+cardSection.renderItems();
 
 //добавляем новую карточку
 function addNewCard(evt) {

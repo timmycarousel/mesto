@@ -1,7 +1,7 @@
 class Section {
   constructor({ items, renderer }, selector) {
     this._renderer = renderer;
-    this._selector = document.querySelector(selector);
+    this._container = document.querySelector(selector);
     this._renderedItems = items;
   }
   //отрисовка элементов
@@ -13,7 +13,7 @@ class Section {
 
   //принимает элементы и добавляет в контейнер
   addItem(element) {
-    this._selector.append(element);
+    this._container.append(element);
   }
 }
 
