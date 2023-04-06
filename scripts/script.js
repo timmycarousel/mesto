@@ -1,7 +1,9 @@
 import { initialCards, validationConfig } from "./Data.js";
 import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
-import { Section } from "./section.js";
+import { Section } from "./Section.js";
+import { PopupWithImage } from "./PopupWithImage.js";
+// import { Popup } from "./Popup.js";
 
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
@@ -29,28 +31,27 @@ function enableValidation(formElement) {
 }
 forms.forEach(enableValidation);
 
-function createCard(data, templateSelector) {
-  const card = new Card(data, templateSelector, openPopup);
+const openPopup = (data) => {
+  popupImage.open(data);
+};
+
+function createCard(data, func) {
+  const card = new Card(data, ".card-template", func);
   return card.generateCard();
 }
-
-// initialCards.forEach((item) => {
-//   const card = createCard(item, ".card-template");
-//   container.append(card);
-// });
 
 const cardSection = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      const card = createCard(item, ".card-template");
-      cardSection.addItem(card);
+      // const card = createCard(item, ".card-template");
+      cardSection.addItem(createCard(item, openPopup));
     },
   },
   ".elements"
 );
 
-cardSection.renderItems();
+cardSection.createCards();
 
 //добавляем новую карточку
 function addNewCard(evt) {
@@ -65,12 +66,6 @@ function addNewCard(evt) {
   closePopup(popupCard);
 
   evt.target.reset();
-}
-
-function openPopup(popup) {
-  popup.classList.add("popup_active");
-  document.addEventListener("keydown", closeEsc);
-  popup.addEventListener("mousedown", clickOverlayClosePopup);
 }
 
 function closePopup(popup) {
@@ -121,3 +116,6 @@ popupUserForm.addEventListener("submit", function (evt) {
   name.textContent = nameInput.value;
   closePopup(popupUser);
 });
+
+const popupImage = new PopupWithImage(".popup_type_img");
+cardSection.createCards();

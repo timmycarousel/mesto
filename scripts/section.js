@@ -1,11 +1,11 @@
 class Section {
-  constructor({ items, renderer }, selector) {
+  constructor({ items, renderer }, containerSelector) {
     this._renderer = renderer;
-    this._container = document.querySelector(selector);
+    this._container = document.querySelector(containerSelector);
     this._renderedItems = items;
   }
   //отрисовка элементов
-  renderItems() {
+  createCards() {
     this._renderedItems.forEach((item) => {
       this._renderer(item);
     });
