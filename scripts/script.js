@@ -70,14 +70,6 @@ const addNewCard = new PopupWithForm({
   },
 });
 
-const userEdit = new PopupWithForm({
-  popupSelector: ".popup_type_user",
-  handleFormSubmit: (data) => {
-    userInfo.setUserInfo(data);
-    userEdit.close();
-  },
-});
-
 //слушатель сабмита карточки
 // popupCardForm.addEventListener("submit", addNewCard);
 
@@ -89,17 +81,26 @@ const userInfo = new UserInfo(".profile-info__name", ".profile-info__text");
 
 // слушатель кнопки редактирования пользователя
 buttonEdit.addEventListener("click", () => {
-  userEdit.open();
   const { name, info } = userInfo.getUserInfo();
   nameInput.value = name;
   infoInput.value = info;
+  userEdit.open();
 });
 
-//слушатель заполния формы пользователя
+const userEdit = new PopupWithForm({
+  popupSelector: ".popup_type_user",
+  handleFormSubmit: (formData) => {
+    userInfo.setUserInfo(formData);
+    userEdit.close();
+  },
+});
+
+// userEdit.setEventListener();
+// слушатель заполния формы пользователя
 // popupUserForm.addEventListener("submit", function (evt) {
 //   evt.preventDefault();
-//   info.textContent = infoInput.value;
-//   name.textContent = nameInput.value;
+//   info.textContent = info.value;
+//   name.textContent = name.value;
 //   closePopup(popupUser);
 // });
 
