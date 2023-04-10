@@ -68,39 +68,39 @@ function addNewCard(evt) {
   evt.target.reset();
 }
 
-function closePopup(popup) {
-  popup.classList.remove("popup_active");
-  document.removeEventListener("keydown", closeEsc);
-  popup.removeEventListener("mousedown", clickOverlayClosePopup);
-}
+// function closePopup(popup) {
+//   popup.classList.remove("popup_active");
+//   document.removeEventListener("keydown", closeEsc);
+//   popup.removeEventListener("mousedown", clickOverlayClosePopup);
+// }
 
-function closeEsc(evt) {
-  if (evt.key === "Escape") {
-    const popupOpened = document.querySelector(".popup_active");
-    closePopup(popupOpened);
-  }
-}
+// function closeEsc(evt) {
+//   if (evt.key === "Escape") {
+//     const popupOpened = document.querySelector(".popup_active");
+//     closePopup(popupOpened);
+//   }
+// }
 
-function clickOverlayClosePopup(evt) {
-  if (evt.target === evt.currentTarget) {
-    closePopup(evt.currentTarget);
-  }
-}
+// function clickOverlayClosePopup(evt) {
+//   if (evt.target === evt.currentTarget) {
+//     closePopup(evt.currentTarget);
+//   }
+// }
 
-closeButtons.forEach(function (button) {
-  const popup = button.closest(".popup");
-  button.addEventListener("click", function () {
-    closePopup(popup);
-  });
-});
+// closeButtons.forEach(function (button) {
+//   const popup = button.closest(".popup");
+//   button.addEventListener("click", function () {
+//     closePopup(popup);
+//   });
+// });
 
 //слушатель сабмита карточки
 popupCardForm.addEventListener("submit", addNewCard);
 
 //слушатель добавления карточки
-buttonOpenPopupAddCard.addEventListener("click", function () {
-  openPopup(popupCard);
-});
+// buttonOpenPopupAddCard.addEventListener("click", function () {
+//   openPopup(popupCard);
+// });
 
 //слушатель кнопки редактирования пользователя
 buttonEdit.addEventListener("click", function () {
