@@ -1,5 +1,5 @@
 import Popup from "./Popup.js";
-class PopupWitsForm extends Popup {
+class PopupWithForm extends Popup {
   constructor({ popupSelector, handleFormSubmit }) {
     super(popupSelector);
     this._form = this._container.querySelector(".popup__field");
@@ -28,4 +28,4 @@ class PopupWitsForm extends Popup {
   }
 }
 
-export { PopupWitsForm };
+export { PopupWithForm };

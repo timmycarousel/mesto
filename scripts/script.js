@@ -3,7 +3,8 @@ import { Card } from "./Card.js";
 import { FormValidator } from "./FormValidator.js";
 import { Section } from "./Section.js";
 import { PopupWithImage } from "./PopupWithImage.js";
-import { PopupWitsForm } from "./PopupWithForm.js";
+import { PopupWithForm } from "./PopupWithForm.js";
+import { UserInfo } from "./UserInfo.js";
 // import { Popup } from "./Popup.js";
 
 const page = document.querySelector(".page");
@@ -13,8 +14,8 @@ const closeButtons = page.querySelectorAll(".popup__close-icon");
 
 const nameInput = page.querySelector("#nameValue");
 const infoInput = page.querySelector("#infoValue");
-const name = page.querySelector(".profile-info__name");
-const info = page.querySelector(".profile-info__text");
+// const name = page.querySelector(".profile-info__name");
+// const info = page.querySelector(".profile-info__text");
 const buttonOpenPopupAddCard = page.querySelector(".profile__add-button");
 // const popupCard = page.querySelector(".popup_type_card");
 const forms = page.querySelectorAll(".popup__field");
@@ -56,7 +57,7 @@ cardSection.createCards();
 
 //добавляем новую карточку
 
-const addNewCard = new PopupWitsForm({
+const addNewCard = new PopupWithForm({
   popupSelector: ".popup_type_card",
   handleFormSubmit: () => {
     const newCardElement = {
@@ -69,6 +70,14 @@ const addNewCard = new PopupWitsForm({
   },
 });
 
+const userEdit = new PopupWithForm({
+  popupSelector: ".popup_type_user",
+  handleFormSubmit: (data) => {
+    userInfo.setUserInfo(data);
+    userEdit.close();
+  },
+});
+
 //слушатель сабмита карточки
 // popupCardForm.addEventListener("submit", addNewCard);
 
@@ -76,13 +85,15 @@ const addNewCard = new PopupWitsForm({
 buttonOpenPopupAddCard.addEventListener("click", function () {
   addNewCard.open();
 });
+const userInfo = new UserInfo(".profile-info__name", ".profile-info__text");
 
-//слушатель кнопки редактирования пользователя
-// buttonEdit.addEventListener("click", function () {
-//   openPopup(popupUser);
-//   nameInput.value = name.textContent;
-//   infoInput.value = info.textContent;
-// });
+// слушатель кнопки редактирования пользователя
+buttonEdit.addEventListener("click", () => {
+  userEdit.open();
+  const { name, info } = userInfo.getUserInfo();
+  nameInput.value = name;
+  infoInput.value = info;
+});
 
 //слушатель заполния формы пользователя
 // popupUserForm.addEventListener("submit", function (evt) {
