@@ -8,7 +8,6 @@ class Card {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.name;
-
     this._templateSelector = templateSelector;
     this._openPopup = openPopup;
   }

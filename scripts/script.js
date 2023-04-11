@@ -9,30 +9,24 @@ import { UserInfo } from "./UserInfo.js";
 
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
-const popupUser = page.querySelector(".popup_type_user");
-const closeButtons = page.querySelectorAll(".popup__close-icon");
 
 const nameInput = page.querySelector("#nameValue");
 const infoInput = page.querySelector("#infoValue");
-// const name = page.querySelector(".profile-info__name");
-// const info = page.querySelector(".profile-info__text");
 const buttonOpenPopupAddCard = page.querySelector(".profile__add-button");
-// const popupCard = page.querySelector(".popup_type_card");
 const forms = page.querySelectorAll(".popup__field");
-const popupUserForm = page.querySelector(".popup__field_user");
-const popupCardForm = page.querySelector(".popup__field_card");
 
 const cardInput = page.querySelector("#newValue");
 const urlInput = page.querySelector("#UrlValue");
 
 const container = document.querySelector(".elements");
-
+//валидация формы
 function enableValidation(formElement) {
   const validator = new FormValidator(validationConfig, formElement);
   validator.enableValidation();
 }
 forms.forEach(enableValidation);
 
+//попап карточки
 const openPopup = (data) => {
   popupImage.open(data);
 };
@@ -53,8 +47,6 @@ const cardSection = new Section(
   ".elements"
 );
 
-cardSection.createCards();
-
 //добавляем новую карточку
 
 const addNewCard = new PopupWithForm({
@@ -70,22 +62,13 @@ const addNewCard = new PopupWithForm({
   },
 });
 
-//слушатель сабмита карточки
-// popupCardForm.addEventListener("submit", addNewCard);
-
 // слушатель добавления карточки
 buttonOpenPopupAddCard.addEventListener("click", function () {
   addNewCard.open();
+  this.setEventListeners();
 });
-const userInfo = new UserInfo(".profile-info__name", ".profile-info__text");
 
-// слушатель кнопки редактирования пользователя
-buttonEdit.addEventListener("click", () => {
-  const { name, info } = userInfo.getUserInfo();
-  nameInput.value = name;
-  infoInput.value = info;
-  userEdit.open();
-});
+const userInfo = new UserInfo(".profile-info__name", ".profile-info__text");
 
 const userEdit = new PopupWithForm({
   popupSelector: ".popup_type_user",
@@ -95,14 +78,13 @@ const userEdit = new PopupWithForm({
   },
 });
 
-// userEdit.setEventListener();
-// слушатель заполния формы пользователя
-// popupUserForm.addEventListener("submit", function (evt) {
-//   evt.preventDefault();
-//   info.textContent = info.value;
-//   name.textContent = name.value;
-//   closePopup(popupUser);
-// });
+// слушатель кнопки редактирования пользователя
+buttonEdit.addEventListener("click", () => {
+  const { name, info } = userInfo.getUserInfo();
+  nameInput.value = name;
+  infoInput.value = info;
+  userEdit.open();
+});
 
 const popupImage = new PopupWithImage(".popup_type_img");
 cardSection.createCards();

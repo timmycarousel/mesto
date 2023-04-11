@@ -63,13 +63,6 @@ class FormValidator {
       _errorElement.textContent = input.validationMessage;
     }
   }
-
-  // hiddenError() {
-  //   const inputError = this._formElement.querySelectorAll("#nameValue-error");
-  //   inputError.forEach(function (inputError) {
-  //     inputError.textContent = " ";
-  //   });
-  // }
 }
 
 export { FormValidator };
