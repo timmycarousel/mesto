@@ -4,12 +4,12 @@ const fullImg = popupImg.querySelector(".popup__img");
 
 class Card {
   //конструктор с элементом, темплейт-селектором и функцией открытия Popup
-  constructor(data, templateSelector, openPopup) {
+  constructor(data, templateSelector, handleCardClick) {
     this._name = data.name;
     this._link = data.link;
     this._alt = data.name;
     this._templateSelector = templateSelector;
-    this._openPopup = openPopup;
+    this._handleCardClick = handleCardClick;
   }
 
   //приватный метод получения шаблона карточки из массива
@@ -37,7 +37,7 @@ class Card {
   //приватный метод открытия попапа картинки
   _openImgPopup() {
     this._element.querySelector(".element__img");
-    this._openPopup(popupImg);
+    this._handleCardClick(popupImg);
     headImg.textContent = this._name;
     fullImg.src = this._link;
     fullImg.alt = this._name;

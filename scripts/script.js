@@ -1,10 +1,10 @@
 import { initialCards, validationConfig } from "./Data.js";
-import { Card } from "./Card.js";
-import { FormValidator } from "./FormValidator.js";
-import { Section } from "./Section.js";
-import { PopupWithImage } from "./PopupWithImage.js";
-import { PopupWithForm } from "./PopupWithForm.js";
-import { UserInfo } from "./UserInfo.js";
+import { Card } from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Section } from "../components/Section.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { UserInfo } from "../components/UserInfo.js";
 // import { Popup } from "./Popup.js";
 
 const page = document.querySelector(".page");
@@ -47,6 +47,21 @@ const cardSection = new Section(
   ".elements"
 );
 
+// const itemList = new Section(
+//   {
+//     items: initialCards,
+//     renderer: (data) => {
+//       const card = new Card(data, ".card-template");
+//       const cardElement = card.generateCard();
+
+//       itemList.addItem(cardElement);
+//     },
+//   },
+//   ".elements"
+// );
+
+// itemList.createCards();
+
 //добавляем новую карточку
 
 const addNewCard = new PopupWithForm({
@@ -62,12 +77,10 @@ const addNewCard = new PopupWithForm({
   },
 });
 
-
-
 // слушатель добавления карточки
 buttonOpenPopupAddCard.addEventListener("click", function () {
   addNewCard.open();
-  this.setEventListeners();
+  // this.setEventListeners();
 });
 
 const userInfo = new UserInfo(".profile-info__name", ".profile-info__text");
