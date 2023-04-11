@@ -62,6 +62,8 @@ const addNewCard = new PopupWithForm({
   },
 });
 
+
+
 // слушатель добавления карточки
 buttonOpenPopupAddCard.addEventListener("click", function () {
   addNewCard.open();
