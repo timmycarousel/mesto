@@ -1,0 +1,15 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "Проект - лендинг. Верстка адаптивная. Можно использовать на разных устройствах. Подключена форма с заполнением полей.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Timofey Voronov",
+  "license": "ISC",
+  "dependencies": {
+    "webpack": "^5.78.0",
+    "webpack-cli": "^5.0.1"
+  }
+}
