@@ -9,6 +9,9 @@
   "author": "Timofey Voronov",
   "license": "ISC",
   "dependencies": {
+    "webpack-dev-server": "^4.13.2"
+  },
+  "devDependencies": {
     "webpack": "^5.78.0",
     "webpack-cli": "^5.0.1"
   }
