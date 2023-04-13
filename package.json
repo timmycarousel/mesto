@@ -4,15 +4,22 @@
   "description": "Проект - лендинг. Верстка адаптивная. Можно использовать на разных устройствах. Подключена форма с заполнением полей.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
   },
   "author": "Timofey Voronov",
   "license": "ISC",
-  "dependencies": {
+  "devDependencies": {
+    "@babel/core": "^7.21.4",
+    "@babel/preset-env": "^7.21.4",
+    "babel-loader": "^9.1.2",
+    "clean-webpack-plugin": "^4.0.0",
+    "html-webpack-plugin": "^5.5.0",
+    "webpack": "^5.78.0",
+    "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.13.2"
   },
-  "devDependencies": {
-    "webpack": "^5.78.0",
-    "webpack-cli": "^5.0.1"
+  "dependencies": {
+    "core-js": "^3.30.0"
   }
 }

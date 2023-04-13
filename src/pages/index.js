@@ -77,6 +77,8 @@ const addNewCard = new PopupWithForm({
   },
 });
 
+addNewCard.setEventListeners();
+
 // слушатель добавления карточки
 buttonOpenPopupAddCard.addEventListener("click", function () {
   addNewCard.open();
@@ -92,6 +94,8 @@ const userEdit = new PopupWithForm({
     userEdit.close();
   },
 });
+
+userEdit.setEventListeners();
 
 // слушатель кнопки редактирования пользователя
 buttonEdit.addEventListener("click", () => {

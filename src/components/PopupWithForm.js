@@ -10,14 +10,25 @@ class PopupWithForm extends Popup {
   close() {
     super.close();
     this._form.reset();
+    console.log(this._inputsValues);
   }
   _getInputValues() {
     this._inputsValues = {};
     this._inputList.forEach((input) => {
+      // debugger;
       this._inputsValues[input.name] = input.value;
     });
     return this._inputsValues;
   }
+
+  // _deleteEventListeners() {
+  //   super._deleteEventListeners();
+  //   this._form.removeEventListener("submit", (evt) => {
+  //     this._handleFormSubmit(this._getInputValues());
+  //     this._form.reset();
+  //     evt.preventDefault();
+  //   });
+  // }
 
   setEventListeners() {
     super.setEventListeners();
@@ -25,6 +36,7 @@ class PopupWithForm extends Popup {
       this._handleFormSubmit(this._getInputValues());
       this._form.reset();
       evt.preventDefault();
+      this.close();
     });
   }
 }
