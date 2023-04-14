@@ -1,4 +1,3 @@
-// import { Card } from "../components/Card.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
@@ -7,7 +6,6 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { initialCards, validationConfig } from "../scripts/Data.js";
 import "./index.css";
-// import { Popup } from "./Popup.js";
 
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");

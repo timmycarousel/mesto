@@ -55,5 +55,5 @@ module.exports = {
     }),
     new CleanWebpackPlugin(), // использовали плагин
     new MiniCssExtractPlugin(),
-  ], // добавьте массив
+  ], 
 };
