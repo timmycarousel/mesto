@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Место</title>
-    <link rel="stylesheet" href="pages/index.css" />
+    <!-- <link rel="stylesheet" href="pages/index.css" /> -->
   </head>
   <body class="html">
     <div class="page">
@@ -14,7 +14,11 @@
       </header>
       <main class="content">
         <div class="profile">
-          <img class="profile__avatar" src="./images/Tim.jpg" alt="Аватар" />
+          <img
+            class="profile__avatar"
+            src="<%=require('./images/Tim.jpg')%>"
+            alt="Аватар"
+          />
           <div class="profile-info">
             <div class="profile-info__nowrap">
               <h1 class="profile-info__name">Тимофей Воронов</h1>
@@ -141,12 +145,12 @@
         </div>
       </div>
     </div>
-    <script src="./components/Card.js" type="module"></script>
+    <!-- <script src="./components/Card.js" type="module"></script>
     <script src="./pages/index.js" type="module"></script>
     <script src="./scripts/Data.js" type="module"></script>
     <script src="./components/FormValidator.js" type="module"></script>
     <script src="./components/Popup.js" type="module"></script>
     <script src="./components/PopupWithImage.js" type="module"></script>
-    <script src="./components/Section.js" type="module"></script>
+    <script src="./components/Section.js" type="module"></script> -->
   </body>
 </html>

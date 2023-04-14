@@ -1,3 +1,4 @@
+// import { Card } from "../components/Card.js";
 import { Card } from "../components/Card.js";
 import { FormValidator } from "../components/FormValidator.js";
 import { Section } from "../components/Section.js";
@@ -5,6 +6,7 @@ import { PopupWithImage } from "../components/PopupWithImage.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { initialCards, validationConfig } from "../scripts/Data.js";
+import "./index.css";
 // import { Popup } from "./Popup.js";
 
 const page = document.querySelector(".page");
@@ -46,21 +48,6 @@ const cardSection = new Section(
   },
   ".elements"
 );
-
-// const itemList = new Section(
-//   {
-//     items: initialCards,
-//     renderer: (data) => {
-//       const card = new Card(data, ".card-template");
-//       const cardElement = card.generateCard();
-
-//       itemList.addItem(cardElement);
-//     },
-//   },
-//   ".elements"
-// );
-
-// itemList.createCards();
 
 //добавляем новую карточку
 
@@ -107,3 +94,4 @@ buttonEdit.addEventListener("click", () => {
 
 const popupImage = new PopupWithImage(".popup_type_img");
 cardSection.createCards();
+popupImage.setEventListeners();
