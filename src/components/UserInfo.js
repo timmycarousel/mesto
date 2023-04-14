@@ -12,5 +12,5 @@ class UserInfo {
     return { name: this._name.textContent, info: this._info.textContent };
   }
 }
-
+//внесем же изменения для комита
 export { UserInfo };
