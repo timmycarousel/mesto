@@ -27,12 +27,13 @@ function enableValidation(formElement) {
 forms.forEach(enableValidation);
 
 //попап карточки
-const openPopup = (data) => {
-  popupImage.open(data);
+const openPopup = (link, name) => {
+  popupImage.open(link, name);
+  // console.log(data);
 };
 
-function createCard(data, func) {
-  const card = new Card(data, ".card-template", func);
+function createCard({ link, name }, func) {
+  const card = new Card({ link, name }, ".card-template", func);
   return card.generateCard();
 }
 
@@ -67,7 +68,6 @@ addNewCard.setEventListeners();
 // слушатель добавления карточки
 buttonOpenPopupAddCard.addEventListener("click", function () {
   addNewCard.open();
-  // this.setEventListeners();
 });
 
 const userInfo = new UserInfo(".profile-info__name", ".profile-info__text");
@@ -91,5 +91,6 @@ buttonEdit.addEventListener("click", () => {
 });
 
 const popupImage = new PopupWithImage(".popup_type_img");
-cardSection.createCards();
+
+cardSection.renderItems();
 popupImage.setEventListeners();

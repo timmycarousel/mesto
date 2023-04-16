@@ -1,13 +1,10 @@
-const popupImg = document.querySelector(".popup_type_img");
-const headImg = popupImg.querySelector(".popup__heading");
-const fullImg = popupImg.querySelector(".popup__img");
-
 class Card {
   //конструктор с элементом, темплейт-селектором и функцией открытия Popup
-  constructor(data, templateSelector, handleCardClick) {
-    this._name = data.name;
-    this._link = data.link;
-    this._alt = data.name;
+  constructor({ link, name }, templateSelector, handleCardClick) {
+    // this._element.querySelector(".element__img");
+    this._name = name;
+    this._link = link;
+    this._alt = name;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
   }
@@ -25,28 +22,24 @@ class Card {
   //публичный метод генерации карточки
   generateCard() {
     this._element = this._getTemplate();
-    const elementImg = this._element.querySelector(".element__img");
-    this._setEventListener();
+    this._elementImg = this._element.querySelector(".element__img");
+    this._likeButton = this._element.querySelector(".element__like-button");
 
-    elementImg.src = this._link;
-    elementImg.alt = this._name;
+    this._elementImg.src = this._link;
+    this._elementImg.alt = this._name;
     this._element.querySelector(".element__text").textContent = this._name;
+
+    this._setEventListener();
 
     return this._element;
   }
   //приватный метод открытия попапа картинки
   _openImgPopup() {
-    this._element.querySelector(".element__img");
-    this._handleCardClick(popupImg);
-    headImg.textContent = this._name;
-    fullImg.src = this._link;
-    fullImg.alt = this._name;
+    this._handleCardClick(this._link, this._name);
   }
   //приватный метод переключения лайка
   _toggleLike() {
-    this._element
-      .querySelector(".element__like-button")
-      .classList.toggle("element__like-button_active");
+    this._likeButton.classList.toggle("element__like-button_active");
   }
   //приватный метод удаления карточки
   _removeCard() {
@@ -62,11 +55,9 @@ class Card {
         this._removeCard();
       });
     //лайков
-    this._element
-      .querySelector(".element__like-button")
-      .addEventListener("click", () => {
-        this._toggleLike();
-      });
+    this._likeButton.addEventListener("click", () => {
+      this._toggleLike();
+    });
     //открытия попапа картинки
     this._element
       .querySelector(".element__img")

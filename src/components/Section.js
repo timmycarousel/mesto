@@ -5,7 +5,7 @@ class Section {
     this._renderedItems = items;
   }
   //отрисовка элементов
-  createCards() {
+  renderItems() {
     this._renderedItems.forEach((item) => {
       this._renderer(item);
     });
@@ -14,6 +14,11 @@ class Section {
   // принимает элементы и добавляет в контейнер
   addItem(element) {
     this._container.append(element);
+  }
+
+  
+  prependItem(element) {
+    this._container.prepend(element);
   }
 }
 

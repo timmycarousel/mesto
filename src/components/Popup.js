@@ -24,12 +24,11 @@ export default class Popup {
     });
   }
 
-  _handleEscClose(evt) {
+  _handleEscClose = (evt) => {
     if (evt.key === "Escape") {
       this.close();
-      console.log("HELLO");
     }
-  }
+  };
 
   _clickOverlayClosePopup(evt) {
     if (evt.target === evt.currentTarget) {

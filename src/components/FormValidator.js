@@ -6,6 +6,9 @@ class FormValidator {
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
     this._formElement = formElement;
+    this._submitButton = this._formElement.querySelector(
+      this._submitButtonSelector
+    );
   }
 
   enableValidation() {
@@ -29,12 +32,15 @@ class FormValidator {
     evt.preventDefault();
   }
   _toggleButton() {
-    const _buttonSubmit = this._formElement.querySelector(
-      this._submitButtonSelector
-    );
+    // const _buttonSubmit = this._formElement.querySelector(
+    //   this._submitButtonSelector
+    // );
     const _isFormValid = this._formElement.checkValidity();
-    _buttonSubmit.disabled = !_isFormValid;
-    _buttonSubmit.classList.toggle(this._inactiveButtonClass, !_isFormValid);
+    this._submitButton.disabled = !_isFormValid;
+    this._submitButton.classList.toggle(
+      this._inactiveButtonClass,
+      !_isFormValid
+    );
   }
 
   _addInputListeners() {

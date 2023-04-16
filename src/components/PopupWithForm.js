@@ -7,10 +7,16 @@ class PopupWithForm extends Popup {
     this._inputList = this._form.querySelectorAll(".field");
   }
 
+  setInputValues(data) {
+    this._inputList.forEach((input) => {
+      // тут вставляем в `value` инпута данные из объекта по атрибуту `name` этого инпута
+      input.value = data[input.name];
+    });
+  }
+
   close() {
     super.close();
     this._form.reset();
-    console.log(this._inputsValues);
   }
   _getInputValues() {
     this._inputsValues = {};
@@ -24,7 +30,6 @@ class PopupWithForm extends Popup {
     super.setEventListeners();
     this._form.addEventListener("submit", (evt) => {
       this._handleFormSubmit(this._getInputValues());
-      this._form.reset();
       evt.preventDefault();
       this.close();
     });
