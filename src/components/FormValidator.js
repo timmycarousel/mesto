@@ -9,6 +9,9 @@ class FormValidator {
     this._submitButton = this._formElement.querySelector(
       this._submitButtonSelector
     );
+    this._inputList = Array.from(
+      this._formElement.querySelectorAll(this._inputSelector)
+    );
   }
 
   enableValidation() {
@@ -44,11 +47,7 @@ class FormValidator {
   }
 
   _addInputListeners() {
-    const _inputList = Array.from(
-      this._formElement.querySelectorAll(this._inputSelector)
-    );
-
-    _inputList.forEach((item) => {
+    this._inputList.forEach((item) => {
       item.addEventListener("input", (evt) => {
         this._handleFormInput(evt);
       });

@@ -29,7 +29,6 @@ forms.forEach(enableValidation);
 //попап карточки
 const openPopup = (link, name) => {
   popupImage.open(link, name);
-  // console.log(data);
 };
 
 function createCard({ link, name }, func) {
@@ -41,7 +40,6 @@ const cardSection = new Section(
   {
     items: initialCards,
     renderer: (item) => {
-      // const card = createCard(item, ".card-template");
       cardSection.addItem(createCard(item, openPopup));
     },
   },
@@ -50,16 +48,27 @@ const cardSection = new Section(
 
 //добавляем новую карточку
 
+// const addNewCard = new PopupWithForm({
+//   popupSelector: ".popup_type_card",
+//   handleFormSubmit: () => {
+//     const newCardElement = {
+//       name: cardInput.value,
+//       link: urlInput.value,
+//     };
+//     const newCard = createCard(newCardElement, openPopup);
+//     container.prepend(newCard);
+//     addNewCard.close();
+//   },
+// });
+
 const addNewCard = new PopupWithForm({
   popupSelector: ".popup_type_card",
   handleFormSubmit: () => {
-    const newCardElement = {
-      name: cardInput.value,
-      link: urlInput.value,
-    };
-    const newCard = createCard(newCardElement, openPopup);
-    container.prepend(newCard);
-    addNewCard.close();
+    const newCard = createCard(
+      { link: urlInput.value, name: cardInput.value },
+      openPopup
+    );
+    cardSection.prependItem(newCard);
   },
 });
 
