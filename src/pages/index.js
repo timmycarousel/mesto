@@ -64,7 +64,7 @@ const cardSection = new Section(
 const addNewCard = new PopupWithForm({
   popupSelector: ".popup_type_card",
   handleFormSubmit: (data) => {
-    console.log(data);
+    // console.log(data);
     const newCard = createCard(data, openPopup);
     cardSection.prependItem(newCard);
   },
