@@ -15,10 +15,6 @@ const infoInput = page.querySelector("#infoValue");
 const buttonOpenPopupAddCard = page.querySelector(".profile__add-button");
 const forms = page.querySelectorAll(".popup__field");
 
-const cardInput = page.querySelector("#newValue");
-const urlInput = page.querySelector("#UrlValue");
-
-const container = document.querySelector(".elements");
 //валидация формы
 function enableValidation(formElement) {
   const validator = new FormValidator(validationConfig, formElement);
