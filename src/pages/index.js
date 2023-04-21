@@ -6,6 +6,7 @@ import { PopupWithForm } from "../components/PopupWithForm.js";
 import { UserInfo } from "../components/UserInfo.js";
 import { initialCards, validationConfig } from "../scripts/Data.js";
 import "./index.css";
+import { Api } from "../components/Api.js";
 
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
@@ -14,6 +15,31 @@ const nameInput = page.querySelector("#nameValue");
 const infoInput = page.querySelector("#infoValue");
 const buttonOpenPopupAddCard = page.querySelector(".profile__add-button");
 const forms = page.querySelectorAll(".popup__field");
+
+const api = new Api({
+  url: "https://nomoreparties.co/v1/cohort-64",
+  headers: {
+    authorization: "a0d61060-a9a4-4380-95cd-b58bf32a5ce6",
+    // "Content-Type": "application/json",
+  },
+});
+
+api.getUserData().then((res) => {
+  userInfo.setUserInfo({
+    name: res.name,
+    info: res.about,
+  });
+});
+
+const userInfo = new UserInfo(".profile-info__name", ".profile-info__text");
+
+// слушатель кнопки редактирования пользователя
+buttonEdit.addEventListener("click", () => {
+  const { name, info } = userInfo.getUserInfo();
+  nameInput.value = name;
+  infoInput.value = info;
+  userEdit.open();
+});
 
 //валидация формы
 function enableValidation(formElement) {
@@ -44,19 +70,6 @@ const cardSection = new Section(
 
 //добавляем новую карточку
 
-// const addNewCard = new PopupWithForm({
-//   popupSelector: ".popup_type_card",
-//   handleFormSubmit: () => {
-//     const newCardElement = {
-//       name: cardInput.value,
-//       link: urlInput.value,
-//     };
-//     const newCard = createCard(newCardElement, openPopup);
-//     container.prepend(newCard);
-//     addNewCard.close();
-//   },
-// });
-
 const addNewCard = new PopupWithForm({
   popupSelector: ".popup_type_card",
   handleFormSubmit: (data) => {
@@ -73,8 +86,6 @@ buttonOpenPopupAddCard.addEventListener("click", function () {
   addNewCard.open();
 });
 
-const userInfo = new UserInfo(".profile-info__name", ".profile-info__text");
-
 const userEdit = new PopupWithForm({
   popupSelector: ".popup_type_user",
   handleFormSubmit: (formData) => {
@@ -84,14 +95,6 @@ const userEdit = new PopupWithForm({
 });
 
 userEdit.setEventListeners();
-
-// слушатель кнопки редактирования пользователя
-buttonEdit.addEventListener("click", () => {
-  const { name, info } = userInfo.getUserInfo();
-  nameInput.value = name;
-  infoInput.value = info;
-  userEdit.open();
-});
 
 const popupImage = new PopupWithImage(".popup_type_img");
 

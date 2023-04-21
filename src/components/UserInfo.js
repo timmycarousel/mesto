@@ -4,9 +4,9 @@ class UserInfo {
     this._info = document.querySelector(infoSelector);
   }
 
-  setUserInfo({ name, info }) {
-    this._name.textContent = name;
-    this._info.textContent = info;
+  setUserInfo(data) {
+    this._name.textContent = data.name;
+    this._info.textContent = data.info;
   }
   getUserInfo() {
     return { name: this._name.textContent, info: this._info.textContent };
