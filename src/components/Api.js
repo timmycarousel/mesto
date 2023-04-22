@@ -10,9 +10,6 @@ class Api {
   }
 
   getUserData() {
-    // console.log(this.headers);
-    // console.log(this.url + "/users/me");
-
     return fetch(this.url + "/users/me", {
       headers: this.headers,
     }).then((res) => this._handleResponse(res));

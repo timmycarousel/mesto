@@ -1,10 +1,10 @@
 class Card {
   //конструктор с элементом, темплейт-селектором и функцией открытия Popup
-  constructor({ link, name }, templateSelector, handleCardClick) {
+  constructor(data, templateSelector, handleCardClick) {
     // this._element.querySelector(".element__img");
-    this._name = name;
-    this._link = link;
-    this._alt = name;
+    this._name = data.name;
+    this._link = data.link;
+    this._alt = data.name;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
   }

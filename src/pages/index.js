@@ -31,6 +31,34 @@ api.getUserData().then((res) => {
   });
 });
 
+function createCard({ link, name }, func) {
+  const card = new Card({ link, name }, ".card-template", func);
+  return card.generateCard();
+}
+
+api.getCardsFromServer().then((data) => {
+  const cardSection = new Section(
+    {
+      items: data,
+      renderer: (item) => {
+        cardSection.addItem(createCard(item, openPopup));
+      },
+    },
+    ".elements"
+  );
+  cardSection.renderItems();
+});
+
+// const cardSection = new Section(
+//   {
+//     items: initialCards,
+//     renderer: (item) => {
+//       cardSection.addItem(createCard(item, openPopup));
+//     },
+//   },
+//   ".elements"
+// );
+
 const userInfo = new UserInfo(".profile-info__name", ".profile-info__text");
 
 // слушатель кнопки редактирования пользователя
@@ -52,21 +80,6 @@ forms.forEach(enableValidation);
 const openPopup = (link, name) => {
   popupImage.open(link, name);
 };
-
-function createCard({ link, name }, func) {
-  const card = new Card({ link, name }, ".card-template", func);
-  return card.generateCard();
-}
-
-const cardSection = new Section(
-  {
-    items: initialCards,
-    renderer: (item) => {
-      cardSection.addItem(createCard(item, openPopup));
-    },
-  },
-  ".elements"
-);
 
 //добавляем новую карточку
 
@@ -97,6 +110,6 @@ const userEdit = new PopupWithForm({
 userEdit.setEventListeners();
 
 const popupImage = new PopupWithImage(".popup_type_img");
-
-cardSection.renderItems();
+// console.log(cardSection);
+// cardSection.renderItems();
 popupImage.setEventListeners();
