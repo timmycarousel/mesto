@@ -20,6 +20,18 @@ class Api {
       headers: this.headers,
     }).then((res) => this._handleResponse(res));
   }
+
+  patchUserData(data) {
+    console.log(data);
+    return fetch(this.url + "/users/me", {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify({
+        about: data.info,
+        name: data.name,
+      }),
+    }).then((res) => this._handleResponse(res));
+  }
 }
 
 export { Api };

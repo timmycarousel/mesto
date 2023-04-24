@@ -20,7 +20,7 @@ const api = new Api({
   url: "https://nomoreparties.co/v1/cohort-64",
   headers: {
     authorization: "a0d61060-a9a4-4380-95cd-b58bf32a5ce6",
-    // "Content-Type": "application/json",
+    "Content-Type": "application/json",
   },
 });
 
@@ -30,6 +30,28 @@ api.getUserData().then((res) => {
     info: res.about,
   });
 });
+
+const userInfo = new UserInfo(".profile-info__name", ".profile-info__text");
+
+const userEdit = new PopupWithForm({
+  popupSelector: ".popup_type_user",
+  handleFormSubmit: (data) => {
+    api
+      .patchUserData(data)
+      .then((res) => {
+        userInfo.setUserInfo({
+          info: res.about,
+          name: res.name,
+        });
+        console.log(data);
+      })
+      .then(userEdit.close());
+    // userInfo.setUserInfo(formData);
+    // userEdit.close();
+  },
+});
+
+userEdit.setEventListeners();
 
 function createCard({ link, name }, func) {
   const card = new Card({ link, name }, ".card-template", func);
@@ -58,8 +80,6 @@ api.getCardsFromServer().then((data) => {
 //   },
 //   ".elements"
 // );
-
-const userInfo = new UserInfo(".profile-info__name", ".profile-info__text");
 
 // слушатель кнопки редактирования пользователя
 buttonEdit.addEventListener("click", () => {
@@ -98,16 +118,6 @@ addNewCard.setEventListeners();
 buttonOpenPopupAddCard.addEventListener("click", function () {
   addNewCard.open();
 });
-
-const userEdit = new PopupWithForm({
-  popupSelector: ".popup_type_user",
-  handleFormSubmit: (formData) => {
-    userInfo.setUserInfo(formData);
-    userEdit.close();
-  },
-});
-
-userEdit.setEventListeners();
 
 const popupImage = new PopupWithImage(".popup_type_img");
 // console.log(cardSection);
