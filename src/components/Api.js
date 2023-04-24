@@ -42,6 +42,14 @@ class Api {
       }),
     }).then((res) => this._handleResponse(res));
   }
+
+  // addLike() {
+  //   return fetch(this.url + "/cards/likes", {
+  //     method: "PUT",
+  //     headers: this.headers,
+  //   }).then(console.log);
+  //   // }).then((res) => this._handleResponse(res));
+  // }
 }
 
 export { Api };

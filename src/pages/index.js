@@ -55,7 +55,7 @@ userEdit.setEventListeners();
 const addNewCard = new PopupWithForm({
   popupSelector: ".popup_type_card",
   handleFormSubmit: (data) => {
-    api.addNewCard(data).then((res) => {
+    api.addNewCard(data).then((data) => {
       const cardSection = new Section(
         {
           items: data,
@@ -69,8 +69,10 @@ const addNewCard = new PopupWithForm({
       cardSection.prependItem(newCard);
       return createCard(
         {
-          name: res.name,
-          link: res.link,
+          name: data.name,
+          link: data.link,
+          likes: data.likes,
+          _id: data._id,
         },
         openPopup
       );
@@ -90,8 +92,10 @@ buttonOpenPopupAddCard.addEventListener("click", function () {
   addNewCard.open();
 });
 
-function createCard({ link, name }, func) {
-  const card = new Card({ link, name }, ".card-template", func);
+// api.addLike().then(console.log);
+
+function createCard({ link, name, likes, _id }, func) {
+  const card = new Card({ link, name, likes, _id }, ".card-template", func);
   return card.generateCard();
 }
 

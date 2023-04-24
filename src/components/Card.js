@@ -7,6 +7,9 @@ class Card {
     this._alt = data.name;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._likes = data.likes;
+
+    // this._likeButton = this._element.querySelector(".element__like-button");
   }
 
   //приватный метод получения шаблона карточки из массива
@@ -24,11 +27,11 @@ class Card {
     this._element = this._getTemplate();
     this._elementImg = this._element.querySelector(".element__img");
     this._likeButton = this._element.querySelector(".element__like-button");
-
+    this._likeCount = this._element.querySelector(".element__counter-like");
+    this._likeCount.textContent = this._likes.length;
     this._elementImg.src = this._link;
     this._elementImg.alt = this._name;
     this._element.querySelector(".element__text").textContent = this._name;
-
     this._setEventListener();
 
     return this._element;
@@ -37,6 +40,13 @@ class Card {
   _openImgPopup() {
     this._handleCardClick(this._link, this._name);
   }
+
+  setLike(like) {
+    this._likeCount.textContent = like.length;
+    this._like = like;
+    this._toggleLike();
+  }
+
   //приватный метод переключения лайка
   _toggleLike() {
     this._likeButton.classList.toggle("element__like-button_active");
