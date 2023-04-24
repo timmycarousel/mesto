@@ -43,15 +43,52 @@ const userEdit = new PopupWithForm({
           info: res.about,
           name: res.name,
         });
-        console.log(data);
       })
       .then(userEdit.close());
-    // userInfo.setUserInfo(formData);
-    // userEdit.close();
   },
 });
 
 userEdit.setEventListeners();
+
+//добавляем новую карточку
+
+const addNewCard = new PopupWithForm({
+  popupSelector: ".popup_type_card",
+  handleFormSubmit: (data) => {
+    api.addNewCard(data).then((res) => {
+      const cardSection = new Section(
+        {
+          items: data,
+          renderer: (item) => {
+            cardSection.addItem(createCard(item, openPopup));
+          },
+        },
+        ".elements"
+      );
+      const newCard = createCard(data, openPopup);
+      cardSection.prependItem(newCard);
+      return createCard(
+        {
+          name: res.name,
+          link: res.link,
+        },
+        openPopup
+      );
+    });
+    // const newCard = createCard(data, openPopup);
+    // cardSection.prependItem(newCard);
+    // console.log(data);
+    // const newCard = createCard(data, openPopup);
+    // cardSection.prependItem(newCard);
+  },
+});
+
+addNewCard.setEventListeners();
+
+// слушатель добавления карточки
+buttonOpenPopupAddCard.addEventListener("click", function () {
+  addNewCard.open();
+});
 
 function createCard({ link, name }, func) {
   const card = new Card({ link, name }, ".card-template", func);
@@ -100,24 +137,6 @@ forms.forEach(enableValidation);
 const openPopup = (link, name) => {
   popupImage.open(link, name);
 };
-
-//добавляем новую карточку
-
-const addNewCard = new PopupWithForm({
-  popupSelector: ".popup_type_card",
-  handleFormSubmit: (data) => {
-    // console.log(data);
-    const newCard = createCard(data, openPopup);
-    cardSection.prependItem(newCard);
-  },
-});
-
-addNewCard.setEventListeners();
-
-// слушатель добавления карточки
-buttonOpenPopupAddCard.addEventListener("click", function () {
-  addNewCard.open();
-});
 
 const popupImage = new PopupWithImage(".popup_type_img");
 // console.log(cardSection);
