@@ -33,9 +33,11 @@
 .profile-info__text{font-size:18px;font-weight:400;line-height:22px;margin-top:-8px;overflow:hidden;padding:0;text-overflow:ellipsis;white-space:nowrap}@media screen and (max-width:890px){.profile-info__text{font-size:14px;justify-self:center;line-height:17px;margin-top:0;max-width:77%;text-align:center}}
 .elements{display:grid;gap:17px;grid-template-columns:repeat(auto-fit,minmax(282px,1fr));justify-items:center;margin:50px auto 0;max-width:880px;padding:0}@media screen and (max-width:1090px){.elements{max-width:90%}}@media screen and (max-width:320px){.elements{gap:19px;margin-top:36px;max-width:100%}}
 .element{background:#fff;border-radius:10px;height:362px;margin:0;max-width:282px;padding:0;position:relative}
+.element__like-container{align-items:center;display:flex;flex-direction:column;margin-left:29px}
+.element__counter-like{color:#000;font-size:13px;font-weight:400;line-height:16px;margin:3px 0 0}
 .element__img{aspect-ratio:1/1;border-top-left-radius:10px;border-top-right-radius:10px;display:block;margin:0;-o-object-fit:cover;object-fit:cover;padding:0;width:100%}.element__img:hover{cursor:pointer}
 .element__text{color:#000;font-size:24px;font-weight:900;line-height:29px;margin:0;max-width:78%;overflow:hidden;padding-left:3px;text-overflow:ellipsis;white-space:nowrap}
-.element__like-button{align-self:center;background-color:transparent;background-image:url(cbed5331d270056562b2.svg);background-repeat:no-repeat;background-size:contain;border:none;height:22px;margin-left:29px;width:22px}.element__like-button:hover{opacity:.5}
+.element__like-button{align-self:center;background-color:transparent;background-image:url(cbed5331d270056562b2.svg);background-repeat:no-repeat;background-size:contain;border:none;height:19px;width:22px}.element__like-button:hover{opacity:.5}
 .element__like-button_active{background-image:url(35948469632d0421d697.svg);opacity:1}
 .element__trash{background-color:transparent;background-image:url(ce3b64935accf9b8212e.svg);background-size:contain;border:0;height:19px;position:absolute;right:20px;top:20px;width:19px}.element__trash:hover{opacity:.5}
 .element__line-text{display:flex;flex-wrap:nowrap;justify-content:space-between;margin:25px auto 0;max-width:246px;padding:0}
