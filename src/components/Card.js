@@ -53,8 +53,9 @@ class Card {
   }
   //приватный метод удаления карточки
   _removeCard() {
-    this._element.remove();
-    this._element = null;
+    console.log("Hello World");
+    // this._element.remove();
+    // this._element = null;
   }
   //приватные слушатели
   //удаления карточки

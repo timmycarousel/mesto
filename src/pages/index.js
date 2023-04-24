@@ -7,9 +7,11 @@ import { UserInfo } from "../components/UserInfo.js";
 import { initialCards, validationConfig } from "../scripts/Data.js";
 import "./index.css";
 import { Api } from "../components/Api.js";
+import Popup from "../components/Popup.js";
 
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
+const buttonTrash = page.querySelector(".element__trash");
 
 const nameInput = page.querySelector("#nameValue");
 const infoInput = page.querySelector("#infoValue");
@@ -77,11 +79,6 @@ const addNewCard = new PopupWithForm({
         openPopup
       );
     });
-    // const newCard = createCard(data, openPopup);
-    // cardSection.prependItem(newCard);
-    // console.log(data);
-    // const newCard = createCard(data, openPopup);
-    // cardSection.prependItem(newCard);
   },
 });
 
@@ -91,8 +88,6 @@ addNewCard.setEventListeners();
 buttonOpenPopupAddCard.addEventListener("click", function () {
   addNewCard.open();
 });
-
-// api.addLike().then(console.log);
 
 function createCard({ link, name, likes, _id }, func) {
   const card = new Card({ link, name, likes, _id }, ".card-template", func);
@@ -141,6 +136,12 @@ forms.forEach(enableValidation);
 const openPopup = (link, name) => {
   popupImage.open(link, name);
 };
+
+// buttonTrash.addEventListener("click", function () {
+//   console.log("Hello World");
+// });
+// const popupDeleteCard = new Popup(".popup_type_delete");
+// popupDeleteCard.open();
 
 const popupImage = new PopupWithImage(".popup_type_img");
 // console.log(cardSection);
