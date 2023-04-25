@@ -92,11 +92,6 @@ buttonOpenPopupAddCard.addEventListener("click", function () {
 const popupDeleteCard = new PopupWithConfirmation(".popup_type_delete");
 popupDeleteCard.setEventListeners();
 
-// function confirmDelete() {
-//   popupDeleteCard.open();
-//   popupDeleteCard.setEventListeners();
-// }
-
 function createCard(data, func) {
   const card = new Card({
     data: data,
