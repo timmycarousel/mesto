@@ -8,10 +8,10 @@ import { initialCards, validationConfig } from "../scripts/Data.js";
 import "./index.css";
 import { Api } from "../components/Api.js";
 import Popup from "../components/Popup.js";
+import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
 
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
-const buttonTrash = page.querySelector(".element__trash");
 
 const nameInput = page.querySelector("#nameValue");
 const infoInput = page.querySelector("#infoValue");
@@ -89,10 +89,45 @@ buttonOpenPopupAddCard.addEventListener("click", function () {
   addNewCard.open();
 });
 
-function createCard({ link, name, likes, _id }, func) {
-  const card = new Card({ link, name, likes, _id }, ".card-template", func);
+const popupDeleteCard = new PopupWithConfirmation(".popup_type_delete");
+popupDeleteCard.setEventListeners();
+
+// function confirmDelete() {
+//   popupDeleteCard.open();
+//   popupDeleteCard.setEventListeners();
+// }
+
+function createCard(data, func) {
+  const card = new Card({
+    data: data,
+    userId: "ebb7d83c51df09134a73c395",
+    templateSelector: ".card-template",
+    handleCardClick: func,
+    handleDeleteConfirm: () => {
+      popupDeleteCard.open();
+      popupDeleteCard.submitDeletion(() => {
+        api.deleteCard(card.getId()).then(() => {
+          card.removeCard();
+          popupDeleteCard.close();
+        });
+
+        // card.removeCard();
+        // popupDeleteCard.close();
+      });
+    },
+    handleLike: () => {
+      api.addLike(getId()).then((res) => {
+        card.setLikes(res.likes);
+      });
+    },
+  });
   return card.generateCard();
 }
+
+// api.deleteCard(id).then((res) => {
+//   card.deleteCard();
+//   popupDeleteCard.close();
+// });
 
 api.getCardsFromServer().then((data) => {
   const cardSection = new Section(
@@ -106,16 +141,6 @@ api.getCardsFromServer().then((data) => {
   );
   cardSection.renderItems();
 });
-
-// const cardSection = new Section(
-//   {
-//     items: initialCards,
-//     renderer: (item) => {
-//       cardSection.addItem(createCard(item, openPopup));
-//     },
-//   },
-//   ".elements"
-// );
 
 // слушатель кнопки редактирования пользователя
 buttonEdit.addEventListener("click", () => {
@@ -138,12 +163,8 @@ const openPopup = (link, name) => {
 };
 
 // buttonTrash.addEventListener("click", function () {
-//   console.log("Hello World");
+//   popupDeleteCard.open();
 // });
-// const popupDeleteCard = new Popup(".popup_type_delete");
-// popupDeleteCard.open();
 
 const popupImage = new PopupWithImage(".popup_type_img");
-// console.log(cardSection);
-// cardSection.renderItems();
 popupImage.setEventListeners();
