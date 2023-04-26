@@ -7,3 +7,7 @@
   text-rendering: optimizeLegibility;
   position: relative;
 }
+
+/* .page_overflowed {
+  overflow: hidden;
+} */

@@ -32,16 +32,6 @@ class Api {
     }).then((res) => this._handleResponse(res));
   }
 
-  changeAvatar(data) {
-    return fetch(this.url + "/users/me/avatar", {
-      method: "PATCH",
-      headers: this.headers,
-      body: JSON.stringify({
-        avatar: data.avatar,
-      }),
-    }).then(this._checkResponse());
-  }
-
   addNewCard(data) {
     return fetch(this.url + "/cards", {
       method: "POST",
@@ -72,6 +62,16 @@ class Api {
     return fetch(this.url + "/cards/" + cardId + "/likes", {
       method: "DELETE",
       headers: this.headers,
+    }).then((res) => this._handleResponse(res));
+  }
+
+  changeAvatar(avatarLink) {
+    return fetch(this.url + "/users/me/avatar", {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: avatarLink.avatar,
+      }),
     }).then((res) => this._handleResponse(res));
   }
 }

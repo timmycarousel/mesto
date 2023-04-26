@@ -14,11 +14,13 @@
       </header>
       <main class="content">
         <div class="profile">
+          <button class="profile__avatar-button button"></button>
           <img
-            class="profile__avatar"
-            src="<%=require('./images/Tim.jpg')%>"
+            class="profile__avatar-img"
+            src="https://bmm.ru/upload/iblock/fc4/fc4af96b5dafb0a14cf675a5faa5d4ba.jpg"
             alt="Аватар"
           />
+
           <div class="profile-info">
             <div class="profile-info__nowrap">
               <h1 class="profile-info__name">Тимофей Воронов</h1>
@@ -155,6 +157,34 @@
             <button class="popup__submit-button button" type="submit">
               Да
             </button>
+          </form>
+        </div>
+      </div>
+      <div class="popup popup_type_avatar">
+        <div class="popup__container popup__container_type_avatar">
+          <button type="button" class="popup__close-icon button"></button>
+          <h2 class="popup__head">Обновить аватар</h2>
+          <form
+            class="popup__field popup__field_avatar"
+            name="avatarForm"
+            novalidate
+          >
+            <button class="popup__submit-button button" type="submit">
+              Сохранить
+            </button>
+            <input
+              type="url"
+              id="avatar"
+              class="popup__field-avatar field"
+              name="avatar"
+              placeholder="Ссылка на картинку"
+              required
+              minlength="2"
+            />
+            <span
+              id="avatar-error"
+              class="popup__span popup__span_error_visible"
+            ></span>
           </form>
         </div>
       </div>

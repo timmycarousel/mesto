@@ -12,6 +12,8 @@ import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
 
 const page = document.querySelector(".page");
 const buttonEdit = page.querySelector(".profile__edit-button");
+const buttonAvatar = page.querySelector(".profile__avatar-button");
+const formAvatar = document.querySelector(".popup__field_avatar");
 
 const nameInput = page.querySelector("#nameValue");
 const infoInput = page.querySelector("#infoValue");
@@ -34,6 +36,7 @@ api
     userInfo.setUserInfo({
       name: res.name,
       info: res.about,
+      avatar: res.avatar,
     });
     userId = res._id;
   })
@@ -42,7 +45,29 @@ api
   })
   .finally(() => {});
 
-const userInfo = new UserInfo(".profile-info__name", ".profile-info__text");
+const userInfo = new UserInfo(
+  ".profile-info__name",
+  ".profile-info__text",
+  ".profile__avatar-img"
+);
+
+const popupAvatar = new PopupWithForm({
+  popupSelector: ".popup_type_avatar",
+  handleFormSubmit: (data) => {
+    api
+      .changeAvatar(data)
+      .then((res) => {
+        userInfo.setAvatar(res.avatar);
+        popupAvatar.close();
+      })
+      .catch((err) => {
+        console.log(`Error: ${err}`);
+      })
+      .finally(() => {});
+  },
+});
+
+popupAvatar.setEventListeners();
 
 const userEdit = new PopupWithForm({
   popupSelector: ".popup_type_user",
@@ -76,23 +101,15 @@ const addNewCard = new PopupWithForm({
         const cardSection = new Section(
           {
             items: data,
-            renderer: (item) => {
-              cardSection.addItem(createCard(item, openPopup));
+            renderer: () => {
+              cardSection.prependItem(openPopup);
             },
           },
           ".elements"
         );
         const newCard = createCard(data, openPopup);
         cardSection.prependItem(newCard);
-        return createCard(
-          {
-            _id: data._id,
-            name: data.name,
-            link: data.link,
-            likes: data.likes,
-          },
-          openPopup
-        );
+        return createCard(data, openPopup);
       })
       .catch((err) => {
         console.log(`Error: ${err}`);
@@ -131,9 +148,6 @@ function createCard(data, func) {
             console.log(`Error: ${err}`);
           })
           .finally(() => {});
-
-        // card.removeCard();
-        // popupDeleteCard.close();
       });
     },
     handleLike: () => {
@@ -195,6 +209,10 @@ buttonEdit.addEventListener("click", () => {
   nameInput.value = name;
   infoInput.value = info;
   userEdit.open();
+});
+buttonAvatar.addEventListener("click", () => {
+  popupAvatar.open();
+  // formAvatar.reset();
 });
 
 //валидация формы
