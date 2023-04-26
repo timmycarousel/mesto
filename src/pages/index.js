@@ -7,7 +7,6 @@ import { UserInfo } from "../components/UserInfo.js";
 import { initialCards, validationConfig } from "../scripts/Data.js";
 import "./index.css";
 import { Api } from "../components/Api.js";
-import Popup from "../components/Popup.js";
 import { PopupWithConfirmation } from "../components/PopupWithConfirmation.js";
 
 const page = document.querySelector(".page");
