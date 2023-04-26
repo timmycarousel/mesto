@@ -54,16 +54,23 @@ const userInfo = new UserInfo(
 const popupAvatar = new PopupWithForm({
   popupSelector: ".popup_type_avatar",
   handleFormSubmit: (data) => {
+    popupAvatar.renderLoading(true);
     api
       .changeAvatar(data)
       .then((res) => {
-        userInfo.setAvatar(res.avatar);
+        userInfo.setUserInfo({
+          name: res.name,
+          info: res.about,
+          avatar: res.avatar,
+        });
         popupAvatar.close();
       })
       .catch((err) => {
         console.log(`Error: ${err}`);
       })
-      .finally(() => {});
+      .finally(() => {
+        popupAvatar.renderLoading(false);
+      });
   },
 });
 
@@ -72,19 +79,23 @@ popupAvatar.setEventListeners();
 const userEdit = new PopupWithForm({
   popupSelector: ".popup_type_user",
   handleFormSubmit: (data) => {
+    userEdit.renderLoading(true);
     api
       .patchUserData(data)
       .then((res) => {
         userInfo.setUserInfo({
           info: res.about,
           name: res.name,
+          avatar: res.avatar,
         });
       })
       .then(userEdit.close())
       .catch((err) => {
         console.log(`Error: ${err}`);
       })
-      .finally(() => {});
+      .finally(() => {
+        userEdit.renderLoading(false);
+      });
   },
 });
 
@@ -95,6 +106,7 @@ userEdit.setEventListeners();
 const addNewCard = new PopupWithForm({
   popupSelector: ".popup_type_card",
   handleFormSubmit: (data) => {
+    addNewCard.renderLoading(true);
     api
       .addNewCard(data)
       .then((data) => {
@@ -114,7 +126,9 @@ const addNewCard = new PopupWithForm({
       .catch((err) => {
         console.log(`Error: ${err}`);
       })
-      .finally(() => {});
+      .finally(() => {
+        addNewCard.renderLoading(false);
+      });
   },
 });
 
