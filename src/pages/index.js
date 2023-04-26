@@ -86,10 +86,10 @@ const addNewCard = new PopupWithForm({
         cardSection.prependItem(newCard);
         return createCard(
           {
+            _id: data._id,
             name: data.name,
             link: data.link,
             likes: data.likes,
-            _id: data._id,
           },
           openPopup
         );

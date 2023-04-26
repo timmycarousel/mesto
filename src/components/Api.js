@@ -32,6 +32,16 @@ class Api {
     }).then((res) => this._handleResponse(res));
   }
 
+  changeAvatar(data) {
+    return fetch(this.url + "/users/me/avatar", {
+      method: "PATCH",
+      headers: this.headers,
+      body: JSON.stringify({
+        avatar: data.avatar,
+      }),
+    }).then(this._checkResponse());
+  }
+
   addNewCard(data) {
     return fetch(this.url + "/cards", {
       method: "POST",
@@ -39,6 +49,7 @@ class Api {
       body: JSON.stringify({
         name: data.name,
         link: data.link,
+        // _id: data._id,
       }),
     }).then((res) => this._handleResponse(res));
   }
