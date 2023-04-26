@@ -50,9 +50,16 @@ class Api {
     }).then(this._handleResponse);
   }
 
-  addLike() {
-    return fetch(this.url + "/cards/" + cardId + "likes", {
+  addLike(cardId) {
+    return fetch(this.url + "/cards/" + cardId + "/likes", {
       method: "PUT",
+      headers: this.headers,
+    }).then((res) => this._handleResponse(res));
+  }
+
+  deleteLike(cardId) {
+    return fetch(this.url + "/cards/" + cardId + "/likes", {
+      method: "DELETE",
       headers: this.headers,
     }).then((res) => this._handleResponse(res));
   }
