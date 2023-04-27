@@ -1,19 +1,27 @@
 class Section {
-  constructor({ items, renderer }, containerSelector) {
+  constructor(renderer, containerSelector) {
     this._renderer = renderer;
     this._container = document.querySelector(containerSelector);
-    this._renderedItems = items;
+    // this._renderedItems = items;
   }
   //отрисовка элементов
-  renderItems() {
-    this._renderedItems.forEach((item) => {
-      this._renderer(item);
-    });
-  }
+  // renderItems(items) {
+  //   items.forEach(this._renderer);
+  // }
+
+  //отрисовка элементов
+
+  // renderItems() {
+  //   this._renderedItems.forEach((item) => {
+  //     this._renderer(item);
+  //   });
+  // }
 
   // принимает элементы и добавляет в контейнер
-  addItem(element) {
-    this._container.append(element);
+  addItem(items) {
+    items.forEach((item) => {
+      this._container.append(this._renderer(item));
+    });
   }
 
   prependItem(element) {

@@ -13,10 +13,6 @@ class UserInfo {
   getUserInfo() {
     return { name: this._name.textContent, info: this._info.textContent };
   }
-
-  // setAvatar(avatarLink) {
-  //   this._avatarLink.src = avatarLink;
-  // }
 }
-//внесем же изменения для комита
+
 export { UserInfo };
